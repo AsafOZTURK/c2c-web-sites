@@ -5,12 +5,12 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="footer-box">
-                                    <h3 class="title-bar-left title-bar-footer">Our Address</h3>
+                                    <h3 class="title-bar-left title-bar-footer">İletişim</h3>
                                     <ul class="corporate-address">
-                                        <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="Phone(01)800433633">PO Box 16122 Collins Street West Victoria 8007 Australia</a></li>
-                                        <li><i class="fa fa-phone" aria-hidden="true"></i>+61 3 8376 6284</li>
-                                        <li><i class="fa fa-fax" aria-hidden="true"></i>+61 3 8376 6284</li>
-                                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i>info@foxtar.com</li>
+                                        <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="<?php echo $ayarcek['ayar_gsm']; ?>"></a></li>
+                                        <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $ayarcek['ayar_faks']; ?></li>
+                                        <li><i class="fa fa-fax" aria-hidden="true"></i><?php echo $ayarcek['ayar_tel']; ?></li>
+                                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i><?php echo $ayarcek['ayar_mail']; ?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -48,13 +48,12 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="footer-box">
-                                    <h3 class="title-bar-left title-bar-footer">Follow Us On</h3>
+                                    <h3 class="title-bar-left title-bar-footer">Bİzi Takip Et!</h3>
                                     <ul class="footer-social">
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                        <li><a href="<?php echo $ayarcek['ayar_facebook']; ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="<?php echo $ayarcek['ayar_twitter']; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="<?php echo $ayarcek['ayar_youtube']; ?>"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                        <li><a href="<?php echo $ayarcek['ayar_google']; ?>"><i class="fa fa-google" aria-hidden="true"></i></a></li>
                                     </ul>
                                     <div class="newsletter-area">
                                         <h3>Newsletter Sign Up!</h3>
@@ -74,7 +73,7 @@
                 </div>
                 <div class="footer-area-bottom">
                     <div class="container">
-                        <p>@ 2017 Foxtar market place. Trademarks and brands are the property of their respective owners.</p>
+                        <p>@ 2021 | Mehmet Asaf ÖZTÜRK</p>
                     </div>
                 </div>
             </footer>

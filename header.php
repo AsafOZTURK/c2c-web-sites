@@ -32,8 +32,19 @@ $kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AlışverişGo</title>
-    <meta name="description" content="">
+
+    <title>
+        <?php
+        if (empty($title)) {
+            echo $ayarcek['ayar_title'];    
+        } else {
+            echo $title;
+        }
+        ?>
+    </title>
+    <meta name="author" author="<?php echo $ayarcek['ayar_description']; ?>">
+    <meta name="keywords" author="<?php echo $ayarcek['ayar_keywords']; ?>">
+    <meta name="description" content="<?php echo $ayarcek['ayar_description']; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
@@ -97,7 +108,7 @@ $kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC);
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
                                 <div class="logo-area">
-                                    <a href="index.php"><img class="img-responsive" src="img\logo.png" alt="logo"></a>
+                                    <a href="index.php"><img width="120" class="img-responsive" src="<?php echo $ayarcek['ayar_logo']; ?>" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
