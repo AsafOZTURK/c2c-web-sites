@@ -1,10 +1,38 @@
-<!doctype html>
-<html class="no-js" lang="">
+<?php
+ob_start();
+session_start();
+
+include "nedmin/netting/baglan.php";
+include "nedmin/production/fonksiyon.php";
+
+$ayarsor = $db->prepare("SELECT * FROM ayar WHERE ayar_id=:id");
+$ayarsor->execute(array(
+    'id' => 0
+));
+$ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
+
+$hakkimizdasor = $db->prepare("SELECT * FROM hakkimizda WHERE hakkimizda_id=:id");
+$hakkimizdasor->execute(array(
+    'id' => 0
+));
+$hakkimizdacek = $hakkimizdasor->fetch(PDO::FETCH_ASSOC);
+
+
+$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail");
+$kullanicisor->execute(array(
+    'mail' => $_SESSION['userkullanici_mail']
+));
+$kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC);
+
+?>
+
+<!DOCTYPE html>
+<html class="no-js" lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Foxtar | Home 2</title>
+    <title>AlışverişGo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -69,14 +97,14 @@
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
                                 <div class="logo-area">
-                                    <a href="index.htm"><img class="img-responsive" src="img\logo.png" alt="logo"></a>
+                                    <a href="index.php"><img class="img-responsive" src="img\logo.png" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                 <ul class="profile-notification">
-                                    <li>
+                                    <!-- <li>
                                         <div class="notify-contact"><span>Need help?</span> Talk to an expert: +61 3 8376 6284</div>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <div class="cart-area">
                                             <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>2</span></a>
@@ -170,26 +198,26 @@
                                     </li>
                                     <li>
                                         <div class="apply-btn-area">
-                                            <a class="apply-now-btn" href="#" id="login-button">Login</a>
+                                            <a class="apply-now-btn" href="#" id="login-button">Giriş</a>
                                             <div class="login-form" id="login-form" style="display: none;">
-                                                <h2>Login</h2>
+                                                <h2>Giriş</h2>
                                                 <form>
-                                                    <input class="form-control" type="text" placeholder="Name">
-                                                    <input class="form-control" type="password" placeholder="Password">
-                                                    <button class="btn-login" type="submit" value="Login">Login</button>
-                                                    <a class="btn-login" href="registration.htm">Registration</a>
+                                                    <input class="form-control" type="text" placeholder="Kullanıcı Adı">
+                                                    <input class="form-control" type="password" placeholder="Parola">
+                                                    <button class="btn-login" type="submit" value="Login">Giriş Yap</button>
+                                                    <a class="btn-login" href="registration.htm">Kayıt Ol</a>
                                                     <div class="remember-lost">
                                                         <div class="checkbox">
-                                                            <label><input type="checkbox"> Remember me</label>
+                                                            <label><input type="checkbox">Beni Hatırla!</label>
                                                         </div>
-                                                        <a class="lost-password" href="#">Lost Your Password?</a>
+                                                        <a class="lost-password" href="#">Şifreni mi Unuttun?</a>
                                                     </div>
                                                     <button class="cross-btn form-cancel" type="submit" value=""><i class="fa fa-times" aria-hidden="true"></i></button>
                                                 </form>
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a class="apply-now-btn-color hidden-on-mobile" href="registration.htm">Register</a></li>
+                                    <li><a class="apply-now-btn-color hidden-on-mobile" href="registration.htm">Kayıt Ol</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -199,7 +227,7 @@
                     <div class="container">
                         <nav id="desktop-nav">
                             <ul>
-                                <li class="active"><a href="#">Home</a>
+                                <li class="active"><a href="index.php">Anasayfa</a>
                                     <ul>
                                         <li><a href="index.htm">Home 1</a></li>
                                         <li><a href="index2.htm">Home 2</a></li>
@@ -266,7 +294,7 @@
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul>
-                                        <li class="active"><a href="#">Home</a>
+                                        <li class="active"><a href="index.php">Anasayfa</a>
                                             <ul>
                                                 <li><a href="index.htm">Home 1</a></li>
                                                 <li><a href="index2.htm">Home 2</a></li>

@@ -7,10 +7,10 @@ require_once "header.php";
 <div class="main-banner2-area">
     <div class="container">
         <div class="main-banner2-wrapper">
-            <h1>Welcome To Foxtar Market Place!</h1>
-            <p>Premium WordPress Themes, Web Templates and Many More ...</p>
+            <h1>AlışveriGO Sitesine Hoşgeldiniz</h1>
+            <p>Aradığınız Tüm Ürünleri Burada Bulabilir Yada Satış Yapabilirsiniz</p>
             <div class="banner-search-area input-group">
-                <input class="form-control" placeholder="Search Your Keywords . . ." type="text">
+                <input class="form-control" placeholder="Aradığınız ürünü girin . . ." type="text">
                 <span class="input-group-addon">
                     <button type="submit">
                         <span class="glyphicon glyphicon-search"></span>
