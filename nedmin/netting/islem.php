@@ -18,124 +18,13 @@ include "../production/fonksiyon.php";
 
 
 
-if (isset($_POST["admingiris"])) {
-	$kullanicimail = $_POST["kullanici_mail"];
-	$kullanicipassword = ($_POST["kullanici_password"]);
-
-	$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail AND kullanici_password=:pass AND kullanici_yetki=:yetki");
-
-	$kullanicisor->execute(array(
-		'mail' => $kullanicimail,
-		'pass' => md5($kullanicipassword),
-		'yetki' => 5
-	));
-
-	$say = $kullanicisor->rowCount();
-
-	if ($say == 1) {
-
-		$_SESSION["kullanici_mail"] = $kullanicimail;
-		Header("Location:../production/index.php");
-		exit;
-	} else {
-
-		Header("Location:../production/login.php?durum=no");
-		exit;
-	}
-}
 
 
-if (isset($_POST['kullanicigiris'])) {
-
-	$kullanicimail = htmlspecialchars($_POST["kullanici_mail"]);
-	$kullanicipassword = htmlspecialchars($_POST["kullanici_password"]);
-
-	$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail AND kullanici_password=:pass AND kullanici_yetki=:yetki AND kullanici_durum=:durum");
-
-	$kullanicisor->execute(array(
-		'mail' => $kullanicimail,
-		'pass' => md5($kullanicipassword),
-		'yetki' => 1,
-		'durum' => 1
-	));
-
-	$say = $kullanicisor->rowCount();
-
-	if ($say == 1) {
-
-		$_SESSION["userkullanici_mail"] = $kullanicimail;
-		Header("Location:../../index.php");
-		exit;
-	} else {
-
-		Header("Location:../../index.php?durum=basarisizgiris");
-		exit;
-	}
-}
 
 
-if (isset($_POST["kullanicikaydet"])) {
 
-	$kullanici_adsoyad = htmlspecialchars($_POST['kullanici_adsoyad']);
-	$kullanici_mail = htmlspecialchars($_POST['kullanici_mail']);
 
-	$kullanici_passwordone = htmlspecialchars($_POST['kullanici_passwordone']);
-	$kullanici_passwordtwo = htmlspecialchars($_POST['kullanici_passwordtwo']);
 
-	if ($kullanici_passwordone == $kullanici_passwordtwo) {
-
-		if (strlen($kullanici_passwordone) >= 6) {
-
-			$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail");
-			$kullanicisor->execute(array(
-				'mail' => $_GET["kullanici_mail"]
-			));
-
-			$say = $kullanicisor->rowCount();
-
-			if ($say == 0) {
-
-				$password = md5($kullanici_passwordone);
-				$kullanici_yetki = 1;
-
-				$kullanicikaydet = $db->prepare("INSERT INTO kullanici SET
-					kullanici_adsoyad=:kullanici_adsoyad,
-					kullanici_mail=:kullanici_mail,
-					kullanici_password=:kullanici_password,
-					kullanici_yetki=:kullanici_yetki
-					");
-				$insert = $kullanicikaydet->execute(array(
-					'kullanici_adsoyad' => $kullanici_adsoyad,
-					'kullanici_mail' => $kullanici_mail,
-					'kullanici_password' => $password,
-					'kullanici_yetki' => $kullanici_yetki
-				));
-
-				if ($insert) {
-
-					Header("Location:../../index.php?durum=loginbasarili");
-					exit;
-				} else {
-
-					Header("Location:../../register.php?durum=basarisiz");
-					exit;
-				}
-			} else {
-
-				Header("Location:../../register.php?durum=mukerrerkayit");
-				exit;
-			}
-		} else {
-
-			Header("Location:../../register.php?durum=eksiksifre");
-			exit;
-		}
-	} else {
-
-		Header("Location:../../register.php?durum=farklisifre");
-		exit;
-	}
-}
 
 
 if (isset($_POST['kullaniciduzenle'])) {
@@ -318,53 +207,6 @@ if (isset($_POST['sepeteekle'])) {
 	}
 }
 
-
-if (isset($_POST['logoduzenle'])) {
-
-	if ($_FILES['ayar_logo']['size'] > 171400) { //dosya biçimi sorgulama
-		echo "Dosya boyutu çok büyük";
-		Header("Location:../production/genel-ayar.php?durum=dosyacokbuyuk");
-		exit;
-	}
-
-	$iziniuzantilar = array('jpeg','png','jpg','gif');
-	$ext = strtolower(substr($_FILES['ayar_logo']["name"],strpos($_FILES['ayar_logo']["name"],'.')+1));
-
-	if (in_array($ext, $iziniuzantilar)=== false) {
-		echo "Dosya biçimi tanımsız";
-		Header("Location:../production/genel-ayar.php?durum=uzantıkabuledilmiyor");
-		exit;
-	}
-
-	$uploads_dir = '../../dimg';
-
-	@$tmp_name = $_FILES['ayar_logo']["tmp_name"];
-	@$name = $_FILES['ayar_logo']["name"];
-
-	$benzersizsayi4 = rand(20000, 32000);
-	$refimgyol = substr($uploads_dir, 6) . "/" . $benzersizsayi4 . $name;
-
-	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizsayi4$name");
-
-
-	$duzenle = $db->prepare("UPDATE ayar SET
-	ayar_logo=:logo
-	WHERE ayar_id=0");
-	$update = $duzenle->execute(array(
-		'logo' => $refimgyol
-	));
-
-	if ($update) {
-
-		$resimsilunlink = $_POST['eski_yol'];
-		unlink("../../$resimsilunlink");
-
-		Header("Location:../production/genel-ayar.php?durum=ok");
-	} else {
-
-		Header("Location:../production/genel-ayar.php?durum=no");
-	}
-}
 
 
 if (isset($_POST['kategoriekle'])) {

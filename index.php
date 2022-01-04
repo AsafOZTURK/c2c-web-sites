@@ -8,7 +8,7 @@ require_once "header.php";
     <div class="container">
         <div class="main-banner2-wrapper">
             <h1>AlışverişGO Sitesine Hoşgeldiniz</h1>
-            <p>Aradığınız tüm ürünleri burada bulabilir ya da satış yapabilirsiniz</p>
+            <p><?php echo $ayarcek['ayar_description']; ?></p>
             <div class="banner-search-area input-group">
                 <input class="form-control" placeholder="Aradığınız ürünü girin . . ." type="text">
                 <span class="input-group-addon">

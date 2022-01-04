@@ -73,7 +73,7 @@
                 </div>
                 <div class="footer-area-bottom">
                     <div class="container">
-                        <p>@ 2021 | Mehmet Asaf ÖZTÜRK</p>
+                        <p>@ 2021 | <?php echo $ayarcek['ayar_author']; ?></p>
                     </div>
                 </div>
             </footer>

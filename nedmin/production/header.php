@@ -44,7 +44,7 @@ if (!isset($_SESSION["kullanici_mail"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mehmet Asaf ÖZTÜRK | PHP Eğitim</title>
+    <title>Admin Panel</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +84,7 @@ if (!isset($_SESSION["kullanici_mail"])) {
                         </div>
                         <div class="profile_info">
                             <span>Hoşgeldin</span>
-                            <h2><?php echo $kullanicicek["kullanici_adsoyad"] ?></h2>
+                            <h2><?php echo $kullanicicek["kullanici_ad"] ?> <?php echo $kullanicicek['kullanici_soyad']; ?></h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -149,7 +149,7 @@ if (!isset($_SESSION["kullanici_mail"])) {
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<?php echo $kullanicicek["kullanici_resim"] ?>" alt=""><?php echo $kullanicicek["kullanici_adsoyad"] ?>
+                                    <img src="<?php echo $kullanicicek["kullanici_resim"] ?>" alt=""><?php echo $kullanicicek["kullanici_ad"] ?> <?php echo $kullanicicek['kullanici_soyad']; ?>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">

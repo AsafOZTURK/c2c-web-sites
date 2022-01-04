@@ -108,127 +108,249 @@ $kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC);
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
                                 <div class="logo-area">
-                                    <a href="index.php"><img width="120" class="img-responsive" src="<?php echo $ayarcek['ayar_logo']; ?>" alt="logo"></a>
+                                    <a href="index.php"><img  width="100" class="img-responsive" src="<?php echo $ayarcek['ayar_logo']; ?>" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                <ul class="profile-notification">
-                                    <!-- <li>
-                                        <div class="notify-contact"><span>Need help?</span> Talk to an expert: +61 3 8376 6284</div>
-                                    </li> -->
-                                    <li>
-                                        <div class="cart-area">
-                                            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>2</span></a>
-                                            <ul>
-                                                <li>
-                                                    <div class="cart-single-product">
-                                                        <div class="media">
-                                                            <div class="pull-left cart-product-img">
-                                                                <a href="#">
-                                                                    <img class="img-responsive" alt="product" src="img\product\more2.jpg">
-                                                                </a>
+                            <ul class="profile-notification">                                            
+                                        <!-- <li>
+                                            <div class="notify-contact"><span>Need help?</span> Talk to an expert: +61 3 8376 6284</div>
+                                        </li> -->
+                                        <?php 
+                                        if (isset($_SESSION['userkullanici_mail'])) { ?>
+
+                                            <li>
+                                                <div class="notify-notification">
+                                                    <a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i><span>8</span></a>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="notify-notification-img">
+                                                                <img class="img-responsive" src="img\profile\1.png" alt="profile">
                                                             </div>
-                                                            <div class="media-body cart-content">
-                                                                <ul>
-                                                                    <li>
-                                                                        <h1><a href="#">Product Title Here</a></h1>
-                                                                        <h2><span>Code:</span> STPT600</h2>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>X 1</p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>$49</p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="trash" href="#"><i class="fa fa-trash-o"></i></a>
-                                                                    </li>
-                                                                </ul>
+                                                            <div class="notify-notification-info">
+                                                                <div class="notify-notification-subject">Need WP Help!</div>
+                                                                <div class="notify-notification-date">01 Dec, 2016</div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="cart-single-product">
-                                                        <div class="media">
-                                                            <div class="pull-left cart-product-img">
-                                                                <a href="#">
-                                                                    <img class="img-responsive" alt="product" src="img\product\more3.jpg">
-                                                                </a>
+                                                            <div class="notify-notification-sign">
+                                                                <i class="fa fa-bell-o" aria-hidden="true"></i>
                                                             </div>
-                                                            <div class="media-body cart-content">
-                                                                <ul>
-                                                                    <li>
-                                                                        <h1><a href="#">Product Title Here</a></h1>
-                                                                        <h2><span>Code:</span> STPT460</h2>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>X 1</p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>$75</p>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="trash" href="#"><i class="fa fa-trash-o"></i></a>
-                                                                    </li>
-                                                                </ul>
+                                                        </li>
+                                                        <li>
+                                                            <div class="notify-notification-img">
+                                                                <img class="img-responsive" src="img\profile\2.png" alt="profile">
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <table class="table table-bordered sub-total-area">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Total</td>
-                                                                <td>$124</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Discount</td>
-                                                                <td>$30</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Vat(20%)</td>
-                                                                <td>$18.8</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Sub Total</td>
-                                                                <td>$112.8</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </li>
-                                                <li>
-                                                    <ul class="cart-checkout-btn">
-                                                        <li><a href="cart.htm" class="btn-find"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Go to Cart</a></li>
-                                                        <li><a href="check-out.htm" class="btn-find"><i class="fa fa-share" aria-hidden="true"></i>Go to Checkout</a></li>
+                                                            <div class="notify-notification-info">
+                                                                <div class="notify-notification-subject">Need HTML Help!</div>
+                                                                <div class="notify-notification-date">01 Dec, 2016</div>
+                                                            </div>
+                                                            <div class="notify-notification-sign">
+                                                                <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="notify-notification-img">
+                                                                <img class="img-responsive" src="img\profile\3.png" alt="profile">
+                                                            </div>
+                                                            <div class="notify-notification-info">
+                                                                <div class="notify-notification-subject">Psd Template Help!</div>
+                                                                <div class="notify-notification-date">01 Dec, 2016</div>
+                                                            </div>
+                                                            <div class="notify-notification-sign">
+                                                                <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                                            </div>
+                                                        </li>
                                                     </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="apply-btn-area">
-                                            <a class="apply-now-btn" href="#" id="login-button">Giriş</a>
-                                            <div class="login-form" id="login-form" style="display: none;">
-                                                <h2>Giriş</h2>
-                                                <form>
-                                                    <input class="form-control" type="text" placeholder="Kullanıcı Adı">
-                                                    <input class="form-control" type="password" placeholder="Parola">
-                                                    <button class="btn-login" type="submit" value="Login">Giriş Yap</button>
-                                                    <a class="btn-login" href="registration.htm">Kayıt Ol</a>
-                                                    <div class="remember-lost">
-                                                        <div class="checkbox">
-                                                            <label><input type="checkbox">Beni Hatırla!</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="notify-message">
+                                                    <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>5</span></a>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="notify-message-img">
+                                                                <img class="img-responsive" src="img\profile\1.png" alt="profile">
+                                                            </div>
+                                                            <div class="notify-message-info">
+                                                                <div class="notify-message-sender">Kazi Fahim</div>
+                                                                <div class="notify-message-subject">Need WP Help!</div>
+                                                                <div class="notify-message-date">01 Dec, 2016</div>
+                                                            </div>
+                                                            <div class="notify-message-sign">
+                                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="notify-message-img">
+                                                                <img class="img-responsive" src="img\profile\2.png" alt="profile">
+                                                            </div>
+                                                            <div class="notify-message-info">
+                                                                <div class="notify-message-sender">Richi Lenal</div>
+                                                                <div class="notify-message-subject">Need HTML Help!</div>
+                                                                <div class="notify-message-date">01 Dec, 2016</div>
+                                                            </div>
+                                                            <div class="notify-message-sign">
+                                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="notify-message-img">
+                                                                <img class="img-responsive" src="img\profile\3.png" alt="profile">
+                                                            </div>
+                                                            <div class="notify-message-info">
+                                                                <div class="notify-message-sender">PsdBosS</div>
+                                                                <div class="notify-message-subject">Psd Template Help!</div>
+                                                                <div class="notify-message-date">01 Dec, 2016</div>
+                                                            </div>
+                                                            <div class="notify-message-sign">
+                                                                <i class="fa fa-reply" aria-hidden="true"></i>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cart-area">
+                                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span>2</span></a>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="cart-single-product">
+                                                                <div class="media">
+                                                                    <div class="pull-left cart-product-img">
+                                                                        <a href="#">
+                                                                            <img class="img-responsive" alt="product" src="img\product\more2.jpg">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="media-body cart-content">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <h1><a href="#">Product Title Here</a></h1>
+                                                                                <h2><span>Code:</span> STPT600</h2>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>X 1</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>$49</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="trash" href="#"><i class="fa fa-trash-o"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="cart-single-product">
+                                                                <div class="media">
+                                                                    <div class="pull-left cart-product-img">
+                                                                        <a href="#">
+                                                                            <img class="img-responsive" alt="product" src="img\product\more3.jpg">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="media-body cart-content">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <h1><a href="#">Product Title Here</a></h1>
+                                                                                <h2><span>Code:</span> STPT460</h2>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>X 1</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>$75</p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a class="trash" href="#"><i class="fa fa-trash-o"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>                                                   
+                                                        <li>
+                                                            <table class="table table-bordered sub-total-area">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Total</td>
+                                                                        <td>$124</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Discount</td>
+                                                                        <td>$30</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Vat(20%)</td>
+                                                                        <td>$18.8</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Sub Total</td>
+                                                                        <td>$112.8</td>
+                                                                    </tr>                                                                 
+                                                                </tbody>
+                                                            </table>
+                                                        </li>
+                                                        <li>
+                                                            <ul class="cart-checkout-btn">
+                                                                <li><a href="cart.htm" class="btn-find"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Go to Cart</a></li>
+                                                                <li><a href="check-out.htm" class="btn-find"><i class="fa fa-share" aria-hidden="true"></i>Go to Checkout</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="user-account-info">
+                                                    <div class="user-account-info-controler">
+                                                        <div class="user-account-img">
+                                                            <img class="img-responsive" src="img\profile\4.png" alt="profile">
                                                         </div>
-                                                        <a class="lost-password" href="#">Şifreni mi Unuttun?</a>
+                                                        <div class="user-account-title">
+                                                            <div class="user-account-name"><?php echo $kullanicicek['kullanici_ad']. " " . $kullanicicek['kullanici_soyad']; ?></div>
+                                                            <div class="user-account-balance">$171.00</div>
+                                                        </div>
+                                                        <div class="user-account-dropdown">
+                                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                        </div>
                                                     </div>
-                                                    <button class="cross-btn form-cancel" type="submit" value=""><i class="fa fa-times" aria-hidden="true"></i></button>
-                                                </form>
+                                                    <ul>
+                                                        <li><a href="#">Profil Düzenleme</a></li>
+                                                        <li><a href="#">Portfolio</a></li>
+                                                        <li><a href="#">Account Setting</a></li>
+                                                        <li><a href="#">Downloads</a></li>
+                                                        <li><a href="#">Wishlist</a></li>
+                                                        <li><a href="#">Upload Item</a></li>
+                                                        <li><a href="#">Statement</a></li>
+                                                        <li><a href="#">Withdraws</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li><a class="apply-now-btn" href="logout.php" id="logout-button">Çıkış Yap</a></li>
+                                    <?php } else { ?>
+                                        <li>
+                                             <div class="apply-btn-area">
+                                                <a class="apply-now-btn" href="login.php" >Giriş Yap</a>
+                                                <!-- 
+                                                    id="login-button"<div class="login-form" id="login-form" style="display: none;">
+                                                    <h2>Login</h2>
+                                                   <form>
+                                                        <input class="form-control" type="text" placeholder="Name">
+                                                        <input class="form-control" type="password" placeholder="Password">
+                                                        <button class="btn-login" type="submit" value="Login">Login</button>
+                                                        <a class="btn-login" href="registration.htm">Registration</a>
+                                                        <div class="remember-lost">
+                                                            <div class="checkbox">
+                                                                <label><input type="checkbox"> Remember me</label>
+                                                            </div>
+                                                            <a class="lost-password" href="#">Lost Your Password?</a>
+                                                        </div>
+                                                        <button class="cross-btn form-cancel" type="submit" value=""><i class="fa fa-times" aria-hidden="true"></i></button>
+                                                    </form>
+                                                </div> -->
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li><a class="apply-now-btn-color hidden-on-mobile" href="registration.htm">Kayıt Ol</a></li>
+                                        </li>
+                                        <li><a class="apply-now-btn-color hidden-on-mobile" href="register.php">Kayıt Ol</a></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>

@@ -33,7 +33,7 @@
                 <section class="login_content">
 
 
-                    <form action="../netting/islem.php" method="POST">
+                    <form action="../netting/kullanici.php" method="POST">
 
 
                         <h1>Yönetim Paneli </h1>
