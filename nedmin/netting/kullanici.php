@@ -5,6 +5,7 @@ session_start();
 include "baglan.php";
 include "../production/fonksiyon.php";
 
+
 if (isset($_POST["musterikaydet"])) {
 
 	$kullanici_ad = htmlspecialchars($_POST['kullanici_ad']);
@@ -72,6 +73,7 @@ if (isset($_POST["musterikaydet"])) {
 	}
 }
 
+
 if (isset($_POST['musterigiris'])) {
 
 	$kullanicimail = htmlspecialchars($_POST["kullanici_mail"]);
@@ -100,6 +102,7 @@ if (isset($_POST['musterigiris'])) {
 	}
 }
 
+
 if (isset($_POST["admingiris"])) {
 	$kullanicimail = $_POST["kullanici_mail"];
 	$kullanicipassword = ($_POST["kullanici_password"]);
@@ -123,6 +126,36 @@ if (isset($_POST["admingiris"])) {
 
 		Header("Location:../production/login.php?durum=no");
 		exit;
+	}
+}
+
+
+if (isset($_POST['musteribilgiguncelle'])) {
+
+	$kullanici_id = $_SESSION['userkullanici_id'];
+
+	$kullaniciguncelle = $db->prepare("UPDATE kullanici SET
+		kullanici_ad=:ad,
+		kullanici_soyad=:kullanici_soyad,
+		kullanici_tc=:tc,
+		kullanici_gsm=:gsm
+		WHERE kullanici_id = $kullanici_id
+		");
+
+    $kontrol = $kullaniciguncelle->execute(array(
+        'ad' => htmlspecialchars($_POST['kullanici_ad']), 
+		'kullanici_soyad' => htmlspecialchars($_POST['kullanici_soyad']),
+		'tc' => htmlspecialchars($_POST['kullanici_tc']),
+		'gsm' => htmlspecialchars($_POST['kullanici_gsm'])
+    ));
+
+	if ($kontrol) {
+
+		Header("Location:../../hesabim.php?durum=ok");
+
+	} else {
+
+		Header("Location:../../hesabim.php?durum=no");
 	}
 }
 
