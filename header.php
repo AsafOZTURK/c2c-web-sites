@@ -84,9 +84,19 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
     <!-- Switch Style CSS -->
     <link rel="stylesheet" href="css\hover-min.css">
 
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="css\select2.min.css">
+
+    <!-- jquery-->
+    <script src="js\jquery-2.2.4.min.js" type="text/javascript"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- jquery.counterup js -->
+    <script src="js\jquery.counterup.min.js"></script>
+    <script src="js\waypoints.min.js"></script>
+    
     <!-- Modernizr Js -->
     <script src="js\modernizr-2.8.3.min.js"></script>
 
@@ -174,7 +184,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                                         <img class="img-responsive" src="img\profile\4.png" alt="profile">
                                                     </div>
                                                     <div class="user-account-title">
-                                                        <div class="user-account-name"><?php echo $kullanicicek['kullanici_ad']; ?>.</div>
+                                                        <div class="user-account-name"><?php echo $kullanicicek['kullanici_ad']; ?></div>
                                                         <div class="user-account-balance">$171.00</div>
                                                     </div>
                                                     <div class="user-account-dropdown">

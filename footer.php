@@ -105,6 +105,9 @@
             <script src="js\jquery.counterup.min.js"></script>
             <script src="js\waypoints.min.js"></script>
 
+            <!-- Select2 Js -->
+            <script src="js\select2.min.js" type="text/javascript"></script>
+
             <!-- Isotope js -->
             <script src="js\isotope.pkgd.min.js" type="text/javascript"></script>
 
@@ -113,6 +116,8 @@
 
             <!-- Custom Js -->
             <script src="js\main.js" type="text/javascript"></script>
+
+            
             </body>
 
             </html>

@@ -2,11 +2,11 @@
 ob_start();
 session_start();
 
-function islemkontrol () {
+function izinsizerisimkontrol () {
 
     if (empty($_SESSION['userkullanici_mail'])) {
 
-        Header("../../index.php?durum=izinsizerisim");
+        Header("Location:404.php?durum=izinsizerisim");
         exit;
     }
 }

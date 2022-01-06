@@ -160,4 +160,97 @@ if (isset($_POST['musteribilgiguncelle'])) {
 }
 
 
-?>
+if (isset($_POST['adresbilgiguncelle'])) {
+
+	$kullanici_id = $_SESSION['userkullanici_id'];
+
+	$kullaniciguncelle = $db->prepare("UPDATE kullanici SET
+		kullanici_tip=:tip,
+		kullanici_tc=:tc,
+		kullanici_unvan=:unvan,
+		kullanici_il=:il,
+		kullanici_ilce=:ilce,
+		kullanici_adres=:adres,
+		kullanici_vno=:vno,
+		kullanici_vdaire=:vdaire
+		WHERE kullanici_id = $kullanici_id
+		");
+
+    $kontrol = $kullaniciguncelle->execute(array(
+		'tip' => htmlspecialchars($_POST['kullanici_tip']),
+		'tc' => htmlspecialchars($_POST['kullanici_tc']),
+		'unvan' => htmlspecialchars($_POST['kullanici_unvan']),
+        'il' => htmlspecialchars($_POST['kullanici_il']), 
+		'ilce' => htmlspecialchars($_POST['kullanici_ilce']),
+		'adres' => htmlspecialchars($_POST['kullanici_adres']),
+		'vno' => htmlspecialchars($_POST['kullanici_vno']),
+		'vdaire' => htmlspecialchars($_POST['kullanici_vdaire']), 
+    ));
+
+	if ($kontrol) {
+
+		Header("Location:../../adres-bilgileri.php?durum=ok");
+
+	} else {
+
+		Header("Location:../../adres-bilgileri.php?durum=no");
+	}
+}
+
+
+if (isset($_POST['musterisifreguncelle'])) {
+
+	$eski_sifre = md5($_POST['kullanici_eskipassword']);
+	$kullanici_passwordone = $_POST['kullanici_passwordone'];
+	$kullanici_passwordtwo = $_POST['kullanici_passwordtwo'];
+
+	$kullanicisor = $db ->prepare("SELECT * FROM kullanici WHERE kullanici_password=:pass");
+	$kullanicisor -> execute(array(
+		'pass' => $eski_sifre
+	));
+
+	$kontrol = $kullanicisor -> rowCount();
+
+	if ($kontrol == 0 ) {
+		Header("Location:../../sifre-guncelle.php?durum=eskisifrehatali");
+		exit;
+	}
+
+	if ($kullanici_passwordone == $kullanici_passwordtwo) {
+
+		if (strlen($kullanici_passwordone) >= 6  ) {
+
+			$yenisifre = md5($kullanici_passwordone);
+			$kullanici_id = $_SESSION['userkullanici_id'];
+
+			$kullaniciguncelle = $db->prepare("UPDATE kullanici SET
+			kullanici_password=:pass		
+			WHERE kullanici_id = $kullanici_id
+			");
+
+			$kontrol = $kullaniciguncelle->execute(array(
+				'pass' => htmlspecialchars($yenisifre)				
+			));
+
+			if ($kontrol) {
+
+				Header("Location:../../sifre-guncelle.php?durum=ok");
+
+			} else {
+
+				Header("Location:../../sifre-guncelle.php?durum=no");
+			}
+
+		} else {
+
+			Header("Location:../../sifre-guncelle.php?durum=eksiksifre");
+
+		}
+
+	} else {
+
+		Header("Location:../../sifre-guncelle.php?durum=uyumsuzsifre");
+
+	}
+
+}

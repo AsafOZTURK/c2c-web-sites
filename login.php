@@ -62,7 +62,7 @@ require_once "header.php";
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <label class="control-label" for="last-name">Parola *</label>
-                            <input type="text" name="kullanici_password" placeholder="Şifrenizi giriniz" required class="form-control">
+                            <input type="password" name="kullanici_password" placeholder="Şifrenizi giriniz" required class="form-control">
                         </div>
                     </div>
                 </div>
