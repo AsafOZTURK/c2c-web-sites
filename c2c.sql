@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 07 Oca 2022, 20:33:27
+-- Üretim Zamanı: 08 Oca 2022, 18:00:47
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -174,8 +174,8 @@ CREATE TABLE `kullanici` (
 --
 
 INSERT INTO `kullanici` (`kullanici_id`, `subMerchantKey`, `kullanici_magaza`, `kullanici_magazafoto`, `kullanici_zaman`, `kullanici_resim`, `kullanici_tc`, `kullanici_banka`, `kullanici_iban`, `kullanici_ad`, `kullanici_soyad`, `kullanici_mail`, `kullanici_gsm`, `kullanici_password`, `kullanici_adres`, `kullanici_il`, `kullanici_ilce`, `kullanici_unvan`, `kullanici_tip`, `kullanici_vdaire`, `kullanici_vno`, `kullanici_yetki`, `kullanici_durum`) VALUES
-(167, '', '0', 'dimg/magaza-fotoyok.png', '2022-01-04 13:51:48', 'https://i.pinimg.com/originals/b5/48/17/b548171a8388d4a7ef6dbbeebc342d1c.jpg', '', '', NULL, 'Asaf', 'ÖZTÜRK', 'Admingiris', '', 'e10adc3949ba59abbe56e057f20f883e', '', '', '', '', 'PERSONAL', '', '', '5', 1),
-(168, '', '0', 'dimg/magaza-fotoyok.png', '2022-01-04 14:28:29', 'https://i.pinimg.com/originals/b5/48/17/b548171a8388d4a7ef6dbbeebc342d1c.jpg', '12345678911', '', NULL, 'Mehmet Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1);
+(167, '', '0', 'dimg/magaza-fotoyok.png', '2022-01-04 13:51:48', 'https://i.pinimg.com/originals/b5/48/17/b548171a8388d4a7ef6dbbeebc342d1c.jpg', '', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', '', 'e10adc3949ba59abbe56e057f20f883e', '', '', '', '', 'PERSONAL', '', '', '5', 1),
+(168, '', '2', 'dimg/magaza-fotoyok.png', '2022-01-04 14:28:29', 'https://i.pinimg.com/originals/b5/48/17/b548171a8388d4a7ef6dbbeebc342d1c.jpg', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Mehmet Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1);
 
 -- --------------------------------------------------------
 

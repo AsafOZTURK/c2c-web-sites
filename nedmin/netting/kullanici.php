@@ -254,3 +254,53 @@ if (isset($_POST['musterisifreguncelle'])) {
 	}
 
 }
+
+
+if (isset($_POST['musterimagazabasvuru'])) {
+
+	$kullanici_id = $_SESSION['userkullanici_id'];
+
+	$kullaniciguncelle = $db->prepare("UPDATE kullanici SET
+		kullanici_tip=:tip,
+		kullanici_ad=:ad,
+		kullanici_soyad=:kullanici_soyad,
+		kullanici_tc=:tc,
+		kullanici_gsm=:gsm,
+		kullanici_banka=:banka,
+		kullanici_iban=:iban,
+		kullanici_unvan=:unvan,
+		kullanici_il=:il,
+		kullanici_ilce=:ilce,
+		kullanici_adres=:adres,
+		kullanici_vno=:vno,
+		kullanici_vdaire=:vdaire,
+		kullanici_magaza=:magaza
+		WHERE kullanici_id = $kullanici_id
+		");
+
+    $kontrol = $kullaniciguncelle->execute(array(
+		'tip' => htmlspecialchars($_POST['kullanici_tip']),
+		'ad' => htmlspecialchars($_POST['kullanici_ad']), 
+		'kullanici_soyad' => htmlspecialchars($_POST['kullanici_soyad']),
+		'gsm' => htmlspecialchars($_POST['kullanici_gsm']),
+		'banka' => htmlspecialchars($_POST['kullanici_banka']),
+		'iban' => htmlspecialchars($_POST['kullanici_iban']),
+		'tc' => htmlspecialchars($_POST['kullanici_tc']),
+		'unvan' => htmlspecialchars($_POST['kullanici_unvan']),
+        'il' => htmlspecialchars($_POST['kullanici_il']), 
+		'ilce' => htmlspecialchars($_POST['kullanici_ilce']),
+		'adres' => htmlspecialchars($_POST['kullanici_adres']),
+		'vno' => htmlspecialchars($_POST['kullanici_vno']),
+		'vdaire' => htmlspecialchars($_POST['kullanici_vdaire']),
+		'magaza' => 1
+    ));
+
+	if ($kontrol) {
+
+		Header("Location:../../magaza-basvuru.php");
+
+	} else {
+
+		Header("Location:../../magaza-basvuru.php?durum=no");
+	}
+}
