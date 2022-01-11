@@ -100,6 +100,9 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
     <!-- Modernizr Js -->
     <script src="js\modernizr-2.8.3.min.js"></script>
 
+    <!-- Ck EDİTÖR -->
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+
 </head>
 
 <body>
@@ -181,7 +184,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                             <div class="user-account-info">
                                                 <div class="user-account-info-controler">
                                                     <div class="user-account-img">
-                                                        <img class="img-responsive" src="img\profile\4.png" alt="profile">
+                                                        <img style="border-radius:30px;" width="32" height="32" class="img-responsive" src="<?php echo $kullanicicek['kullanici_magazafoto']; ?>" alt="profile">
                                                     </div>
                                                     <div class="user-account-title">
                                                         <div class="user-account-name"><?php echo $kullanicicek['kullanici_ad']; ?></div>

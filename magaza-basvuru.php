@@ -31,7 +31,7 @@ izinsizerisimkontrol();
 
                 <div class="settings-details tab-content">
                     <div class="tab-pane fade active in" id="Personal">
-                        <h2 class="title-section">Adres Bilgilerimi Düzenle</h2>
+                        <h2 class="title-section">Mağaza Başvuru Durumu</h2>
                         <div class="personal-info inner-page-padding">
 
                             <?php

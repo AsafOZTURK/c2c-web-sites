@@ -27,36 +27,7 @@ include "../production/fonksiyon.php";
 
 
 
-if (isset($_POST['kullaniciduzenle'])) {
 
-	$kullanici_id = $_POST['kullanici_id'];
-	$kullanicipassword = md5($_POST['kullanici_password']);
-
-	$ayarkaydet = $db->prepare("UPDATE kullanici SET
-		kullanici_tc=:kullanici_tc,
-		kullanici_adsoyad=:kullanici_adsoyad,
-        kullanici_gsm=:kullanici_gsm,
-		kullanici_password=:kullanici_password,
-		kullanici_durum=:kullanici_durum
-		WHERE kullanici_id={$_POST['kullanici_id']}");
-
-	$update = $ayarkaydet->execute(array(
-		'kullanici_tc' => $_POST['kullanici_tc'],
-		'kullanici_adsoyad' => $_POST['kullanici_adsoyad'],
-		'kullanici_gsm' => $_POST['kullanici_gsm'],
-		'kullanici_durum' => $_POST['kullanici_durum'],
-		'kullanici_password' => $kullanicipassword
-	));
-
-
-	if ($update) {
-
-		Header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=ok");
-	} else {
-
-		Header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=no");
-	}
-}
 
 
 if ($_GET["kullanicisil"] == 'ok') {

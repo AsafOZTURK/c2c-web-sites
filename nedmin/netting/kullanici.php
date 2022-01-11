@@ -256,6 +256,64 @@ if (isset($_POST['musterisifreguncelle'])) {
 }
 
 
+if (isset($_POST['profilresimguncelle'])) {
+
+	if ($_FILES['ayar_logo']['size'] > 171400) { //dosya biçimi sorgulama
+		echo "Dosya boyutu çok büyük";
+		Header("Location:../production/genel-ayar.php?durum=dosyacokbuyuk");
+		exit;
+	}
+
+	$iziniuzantilar = array('jpeg','png','jpg');
+	$ext = strtolower(substr($_FILES['kullanici_magazafoto']["name"],strpos($_FILES['kullanici_magazafoto']["name"],'.')+1));
+
+	if (in_array($ext, $iziniuzantilar)=== false) {
+		echo "Dosya biçimi tanımsız";
+		Header("Location:../../profilfoto-guncelle.php?durum=uzantıkabuledilmiyor");
+		exit;
+	}
+
+	@$tmp_name = $_FILES['kullanici_magazafoto']["tmp_name"];
+	@$name = seo($_FILES['kullanici_magazafoto']["name"]);
+
+	//image resize işlemleri
+	include "simpleimage.php";
+	$image = new SimpleImage();
+	$image -> load($tmp_name);
+	$image -> resize(128,128);
+	$image -> save ($tmp_name);
+
+	
+	$uploads_dir = '../../dimg/userimage';
+
+	
+
+	$uniq = uniqid();
+	$refimgyol = substr($uploads_dir, 6) . "/" . $uniq.".".$ext;
+
+	@move_uploaded_file($tmp_name, "$uploads_dir/$uniq.$ext");
+
+
+	$duzenle = $db->prepare("UPDATE kullanici SET
+	kullanici_magazafoto=:foto
+	WHERE kullanici_id={$_POST['kullanici_id']}");
+	$update = $duzenle->execute(array(
+		'foto' => $refimgyol
+	));
+
+	if ($update) {
+
+		$resimsilunlink = $_POST['eski_yol'];
+		unlink("../../$resimsilunlink");
+
+		Header("Location:../../profilfoto-guncelle.php?durum=ok");
+	} else {
+
+		Header("Location:../../profil-guncelle.php?durum=no");
+	}
+}
+
+
 if (isset($_POST['musterimagazabasvuru'])) {
 
 	$kullanici_id = $_SESSION['userkullanici_id'];
@@ -302,5 +360,73 @@ if (isset($_POST['musterimagazabasvuru'])) {
 	} else {
 
 		Header("Location:../../magaza-basvuru.php?durum=no");
+	}
+}
+
+
+if (isset($_POST['urunekle'])) {
+
+	if ($_FILES['urunfoto_resimyol']['size'] > 171400) { //dosya biçimi sorgulama
+		echo "Dosya boyutu çok büyük";
+		Header("Location:../production/urun-ekle.php?durum=dosyacokbuyuk");
+		exit;
+	}
+
+	$iziniuzantilar = array('jpeg','png','jpg');
+	$ext = strtolower(substr($_FILES['urunfoto_resimyol']["name"],strpos($_FILES['urunfoto_resimyol']["name"],'.')+1));
+
+	if (in_array($ext, $iziniuzantilar)=== false) {
+		echo "Dosya biçimi tanımsız";
+		Header("Location:../../urun-ekle.php?durum=uzantıkabuledilmiyor");
+		exit;
+	}
+
+	@$tmp_name = $_FILES['urunfoto_resimyol']["tmp_name"];
+	@$name = seo($_FILES['urunfoto_resimyol']["name"]);
+
+	//image resize işlemleri
+	include "simpleimage.php";
+	$image = new SimpleImage();
+	$image -> load($tmp_name);
+	$image -> resize(829,422);
+	$image -> save ($tmp_name);
+
+	
+	$uploads_dir = '../../dimg/urunfoto';
+
+	
+
+	$uniq = uniqid();
+	$refimgyol = substr($uploads_dir, 6) . "/" . $uniq.".".$ext;
+
+	@move_uploaded_file($tmp_name, "$uploads_dir/$uniq.$ext");
+
+
+	$kaydet = $db->prepare("INSERT INTO urun SET
+	kategori_id=:kategori,
+	kullanici_id=:kullanici,
+	urunfoto_resimyol=:foto,
+	urun_ad=:ad,
+	urun_detay=:detay,
+	urun_fiyat=:fiyat,
+	urun_durum=:durum
+	");
+
+	$insert = $kaydet->execute(array(
+		'foto' => $refimgyol,
+		'ad' => htmlspecialchars($_POST['urun_ad']),
+		'detay' => htmlspecialchars($_POST['urun_detay']),
+		'fiyat' => htmlspecialchars($_POST['urun_fiyat']),
+		'kategori' => htmlspecialchars($_POST['kategori_id']),
+		'kullanici' => $_SESSION['userkullanici_id'],
+		'durum' => 0
+	));
+
+	if ($insert) {
+		Header("Location:../../urunlerim.php?durum=ok");
+
+	} else {
+
+		Header("Location:../../urun-ekle.php?durum=no");
 	}
 }

@@ -1,8 +1,10 @@
 <?php
 include "header.php";
 
-$kullanicisor = $db->prepare("SELECT * FROM kullanici");
-$kullanicisor->execute();
+$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_magaza=:magaza");
+$kullanicisor->execute(array(
+    'magaza' => 1
+));
 
 
 ?>
@@ -14,7 +16,7 @@ $kullanicisor->execute();
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Kullanici Listeleme<small>
+                        <h2>Mağaza Başvuru<small>
 
                                 <?php
                                 if ($_GET['sil'] == 'ok') { ?>
@@ -43,11 +45,11 @@ $kullanicisor->execute();
                                         <thead>
                                             <tr>
                                                 <th>Kayıt Tarihi</th>
-                                                <th>Ad Soyad</th>
+                                                <th>Firma Adı</th>
+                                                <th>Ad</th>
+                                                <th>Soyad</th>
                                                 <th>Mail Adresi</th>
-                                                <th>Yetki</th>
-                                                <th></th>
-                                                <th></th>
+                                                <th width="100">Mağaza İnceleme</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -56,21 +58,11 @@ $kullanicisor->execute();
                                             while ($kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC)) { ?>
                                                 <tr>
                                                     <td width="100"><?php echo $kullanicicek["kullanici_zaman"]; ?></td>
-                                                    <td width="300"><?php echo $kullanicicek["kullanici_ad"]; ?> <?php echo $kullanicicek["kullanici_soyad"]; ?></td>
+                                                    <td><?php echo $kullanicicek["kullanici_unvan"]; ?></td>
+                                                    <td width="200"><?php echo $kullanicicek["kullanici_ad"]; ?></td>
+                                                    <td width="200"><?php echo $kullanicicek["kullanici_soyad"]; ?></td>
                                                     <td><?php echo $kullanicicek["kullanici_mail"]; ?></td>
-                                                    <td>
-
-                                                        <?php 
-                                                        if ($kullanicicek["kullanici_yetki"] == 1) { ?>
-                                                            <center><button class="btn btn-success btn-xs">Kullanıcı</button></center>
-                                                        <?php } else if ($kullanicicek["kullanici_yetki"] == 5) { ?>
-                                                            <center><button class="btn btn-danger btn-xs">Admin</button></center>
-                                                        <?php } 
-                                                        ?>
-
-                                                    </td>
-                                                    <td align="center"><a href="kullanici-duzenle.php?kullanici_id=<?php echo $kullanicicek["kullanici_id"]; ?>"><button class="btn-primary btn-xs">Düzenle</button></a></td>
-                                                    <td align="center"><a href="../netting/islem.php?kullanici_id=<?php echo $kullanicicek["kullanici_id"]; ?>&kullanicisil=ok"><button class="btn-danger btn-xs">Sil</button></a></td>
+                                                    <td align="center"><a href="magaza-onay-islemleri.php?kullanici_id=<?php echo $kullanicicek["kullanici_id"]; ?>"><button class="btn-primary btn-xs">İncele</button></a></td>
                                                 </tr>
                                             <?php } ?>
 
