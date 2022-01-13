@@ -5,6 +5,14 @@ izinsizerisimkontrol();
 $kategorisor = $db->prepare("SELECT * FROM kategori");
 $kategorisor->execute();
 
+$urun_id = $_GET['urun_id'];
+
+$urunsor = $db->prepare("SELECT * FROM urun WHERE urun_id=:urun_id AND kullanici_id=:kullanici_id");
+$urunsor->execute(array(
+    'kullanici_id' => $_SESSION['userkullanici_id'],
+    'urun_id' => $urun_id
+));
+$uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
 
 ?>
 <div class="pagination-area bg-secondary">
@@ -27,18 +35,28 @@ $kategorisor->execute();
                 <?php
                 if ($_GET['durum'] == 'no') { ?>
                     <div class="alert alert-danger">
-                        <strong>HATA!</strong> Ürün ekleme işlemi başarısız
+                        <strong>HATA!</strong> Ürün düzenleme işlemi başarısız
                     </div>
-                <?php }  ?>
+                <?php } else if ($_GET['durum'] == 'ok') { ?>
+                    <div class="alert alert-success">
+                        <strong>Bilgi!</strong> Ürün düzenleme işlemi başarılı
+                    </div>
+                <?php } ?>
                 <form class="form-horizontal" action="nedmin/netting/kullanici.php" method="POST" enctype="multipart/form-data" id="personal-info-form">
                     <div class="settings-details tab-content">
                         <div class="tab-pane fade active in" id="Personal">
-                            <h2 class="title-section">Ürün Ekleme</h2>
+                            <h2 class="title-section">Ürün Düzenleme</h2>
                             <div class="personal-info inner-page-padding">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Mevcut Fotoğraf</label>
+                                    <div class="col-sm-9">
+                                        <img width="200" src="<?php echo $uruncek['urunfoto_resimyol']; ?>" alt="">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Ürün Resim</label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="first-name" required name="urunfoto_resimyol" type="file">
+                                        <input class="form-control" id="first-name" name="urunfoto_resimyol" type="file">
                                     </div>
                                 </div>
 
@@ -51,7 +69,9 @@ $kategorisor->execute();
                                                 <?php
                                                 while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
 
-                                                    <option value="<?php echo $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></option>
+                                                    <option <?php if ($kategoricek['kategori_id'] == $uruncek['kategori_id']) {
+                                                                echo "selected";
+                                                            } ?> value="<?php echo $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -60,14 +80,14 @@ $kategorisor->execute();
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Ürün Adı</label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="first-name" name="urun_ad" placeholder="Ürün adını giriniz" type="text">
+                                        <input class="form-control" id="first-name" name="urun_ad" required value="<?php echo $uruncek['urun_ad']; ?>" type="text">
                                     </div>
                                 </div>
                                 <!-- Ck Editör Başlangıç -->
                                 <div class="form-group">
                                     <label class="control-label col-md-3" for="first-name">Ürün Detay</label>
                                     <div class="col-md-9 col-sm-9 col-xs-9">
-                                        <textarea class="ckeditor" id="editor1" placholder="Ürün açıklamamızı buraya giriyoruz" name="urun_detay"></textarea>
+                                        <textarea class="ckeditor" id="editor1" required name="urun_detay"><?php echo $uruncek['urun_detay']; ?></textarea>
                                     </div>
                                 </div>
                                 <script type="text/javascript">
@@ -85,12 +105,13 @@ $kategorisor->execute();
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">Ürün Fiyat</label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="first-name" name="urun_fiyat" min="0" placeholder="Ürün fiyatını giriniz" type="number">
+                                        <input class="form-control" id="first-name" name="urun_fiyat" min="0" required value="<?php echo $uruncek['urun_fiyat']; ?>" type="number">
                                     </div>
                                 </div>
+                                <input type="hidden" name="urun_id" value="<?php echo $uruncek['urun_id']; ?>">
                                 <div class="form-group">
                                     <div class="col-sm-12" align="right">
-                                        <button type="submit" name="urunekle" class="btn update-btn" id="email-setting-save">Ürün Ekle</button>
+                                        <button type="submit" name="urunduzenle" class="btn update-btn" id="email-setting-save">Düzenle</button>
                                     </div>
                                 </div>
                             </div>

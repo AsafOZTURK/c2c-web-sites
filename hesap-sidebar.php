@@ -17,7 +17,7 @@
     <hr>
         <ul class="settings-title">
             <li class="active"><a href="javascript:void(0)"><b>MAĞAZA İŞLEMLERİ</b></a></li>
-            <li><a href="adres-bilgileri.php">Ürünlerim</a></li>
+            <li><a href="urunlerim.php">Ürünlerim</a></li>
             <li><a href="urun-ekle.php">Ürün Ekle</a></li>
             <li><a href="sifre-guncelle.php">Yeni Siparişlerim</a></li>
             <li><a href="sifre-guncelle.php">Tamamlanan Siparişler</a></li>

@@ -179,7 +179,6 @@ if (isset($_POST['sepeteekle'])) {
 }
 
 
-
 if (isset($_POST['kategoriekle'])) {
 
 	$kategori_seourl = seo($_POST['kategori_ad']);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 11 Oca 2022, 13:45:21
+-- Üretim Zamanı: 13 Oca 2022, 14:00:47
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -63,7 +63,7 @@ CREATE TABLE `ayar` (
 --
 
 INSERT INTO `ayar` (`ayar_id`, `ayar_logo`, `ayar_url`, `ayar_title`, `ayar_description`, `ayar_keywords`, `ayar_author`, `ayar_tel`, `ayar_gsm`, `ayar_faks`, `ayar_mail`, `ayar_ilce`, `ayar_il`, `ayar_adres`, `ayar_mesai`, `ayar_maps`, `ayar_analystic`, `ayar_zopim`, `ayar_facebook`, `ayar_twitter`, `ayar_google`, `ayar_youtube`, `ayar_smtphost`, `ayar_smtpuser`, `ayar_smtppassword`, `ayar_smtpport`, `ayar_bakim`) VALUES
-(0, 'dimg/25892Ekran görüntüsü 2022-01-04 150852.png', 'http://localhost/c2c', 'AlışverişGO', 'Udemy Php Eğitim Seti C2C Sitesi', 'c2c,eticaret,hepsiburada,alışverişgo', 'Mehmet Asaf ÖZTÜRK', '0533 339 39 39', '0456 564 65 64 ', '0850 696 69 69', 'iletisim@alisverisgo.com', 'Tepebaşı', 'Eskişehir', 'Şirintepe Mahallesi No/50', '7/24 Kullanılabilir', '#', '#', '#', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.google.com/', 'https://www.youtube.com/', 'mail@alanadi.com', 'username', 'password', '587', '1');
+(0, 'dimg/31966Ekran görüntüsü 2022-01-13 142253.png', 'http://localhost/c2c', 'AlışverişGO', 'Udemy Php Eğitim Seti C2C Sitesi', 'c2c,eticaret,hepsiburada,alışverişgo', 'Mehmet Asaf ÖZTÜRK', '0533 339 39 39', '0456 564 65 64 ', '0850 696 69 69', 'iletisim@alisverisgo.com', 'Tepebaşı', 'Eskişehir', 'Şirintepe Mahallesi No/50', '7/24 Kullanılabilir', '#', '#', '#', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.google.com/', 'https://www.youtube.com/', 'mail@alanadi.com', 'username', 'password', '587', '1');
 
 -- --------------------------------------------------------
 
@@ -173,9 +173,9 @@ CREATE TABLE `kullanici` (
 --
 
 INSERT INTO `kullanici` (`kullanici_id`, `subMerchantKey`, `kullanici_magaza`, `kullanici_magazafoto`, `kullanici_zaman`, `kullanici_resim`, `kullanici_tc`, `kullanici_banka`, `kullanici_iban`, `kullanici_ad`, `kullanici_soyad`, `kullanici_mail`, `kullanici_gsm`, `kullanici_password`, `kullanici_adres`, `kullanici_il`, `kullanici_ilce`, `kullanici_unvan`, `kullanici_tip`, `kullanici_vdaire`, `kullanici_vno`, `kullanici_yetki`, `kullanici_durum`, `iptal_nedeni`) VALUES
-(167, '', '0', 'dimg/userimage/26579indir-jpg', '2022-01-04 13:51:48', 'dimg/userimage/26579indir-jpg', '12345678999', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', 'Anadolu Üniversitesi', 'e10adc3949ba59abbe56e057f20f883e', 'Anadolu Üniversitesi', 'Eskişehir', 'Tepebaşı', '', 'PERSONAL', '', '', '5', 1, ''),
+(167, '', '0', 'dimg/userimage/26579indir-jpg', '2022-01-04 13:51:48', 'https://i.tmgrup.com.tr/gq/original/17-06/22/user_male_circle_filled1600.png', '12345678999', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', 'Anadolu Üniversitesi', 'e10adc3949ba59abbe56e057f20f883e', 'Anadolu Üniversitesi', 'Eskişehir', 'Tepebaşı', '', 'PERSONAL', '', '', '5', 1, ''),
 (168, '', '2', 'dimg/userimage/61dd716824d66.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Mehmet Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
-(169, '', '2', 'dimg/30119s2.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Halkbank', '4345 4345 4345 4345', 'Cabbar', 'Deneme', 'cabbar@com.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, '');
+(169, '', '2', 'dimg/userimage/61e0132a21ce4.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Halkbank', '4345 4345 4345 4345', 'Cabbar', 'Deneme', 'cabbar@com.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, '');
 
 -- --------------------------------------------------------
 
@@ -311,6 +311,17 @@ CREATE TABLE `urun` (
   `urun_durum` enum('0','1') CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
   `urun_onecikar` enum('0','1') CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `urun`
+--
+
+INSERT INTO `urun` (`urun_id`, `kullanici_id`, `kategori_id`, `urun_zaman`, `urunfoto_resimyol`, `urun_ad`, `urun_seourl`, `urun_detay`, `urun_fiyat`, `urun_satis`, `urun_video`, `urun_keyword`, `urun_stok`, `urun_durum`, `urun_onecikar`) VALUES
+(40, 169, 12, '2022-01-13 11:55:44', 'dimg/urunfoto/61e01340f211f.jpg', 'Deneme Ürün Üç', '', '&lt;p&gt;&amp;lt;?php echo $uruncek[&amp;#39;urun_zaman&amp;#39;]; ?&amp;gt;&amp;lt;?php echo $uruncek[&amp;#39;urun_zaman&amp;#39;]; ?&amp;gt;&amp;lt;?php echo $uruncek[&amp;#39;urun_zaman&amp;#39;]; ?&amp;gt;&amp;lt;?php echo $uruncek[&amp;#39;urun_zaman&amp;#39;]; ?&amp;gt;&amp;lt;?php echo $uruncek[&amp;#39;urun_zaman&amp;#39;]; ?&amp;gt;&amp;lt;?php echo $uruncek[&amp;#39;urun_zaman&amp;#39;]; ?&amp;gt;&lt;/p&gt;\r\n', 500.00, 0, '', '', 0, '1', '0'),
+(41, 168, 10, '2022-01-13 12:00:56', 'dimg/urunfoto/61e01478b5da7.jpg', 'Bosstrap V3 Hazır Template', '', '&lt;p&gt;Lorem Ipsum, masa&amp;uuml;st&amp;uuml; yayıncılık ve basın yayın sekt&amp;ouml;r&amp;uuml;nde kullanılan taklit yazı bloğu olarak tanımlanır. Lipsum, oluşturulacak şablon ve taslaklarda i&amp;ccedil;erik yerine ge&amp;ccedil;erek yazı bloğunu doldurmak i&amp;ccedil;in kullanılır.&lt;/p&gt;\r\n', 300.00, 0, '', '', 0, '1', '0'),
+(42, 168, 10, '2022-01-13 12:01:47', 'dimg/urunfoto/61e014ab11a39.jpg', 'Mobil Uyumlu  Shop Template V1', '', '&lt;p&gt;Lorem Ipsum, masa&amp;uuml;st&amp;uuml; yayıncılık ve basın yayın sekt&amp;ouml;r&amp;uuml;nde kullanılan taklit yazı bloğu olarak tanımlanır. Lipsum, oluşturulacak şablon ve taslaklarda i&amp;ccedil;erik yerine ge&amp;ccedil;erek yazı bloğunu doldurmak i&amp;ccedil;in kullanılır.&lt;/p&gt;\r\n', 1000.00, 0, '', '', 0, '0', '0'),
+(43, 168, 12, '2022-01-13 12:02:24', 'dimg/urunfoto/61e014d0d0b0d.jpg', 'Responsive Kişisel Tanıtım Sitesi Template V5', '', '&lt;p&gt;Lorem Ipsum, masa&amp;uuml;st&amp;uuml; yayıncılık ve basın yayın sekt&amp;ouml;r&amp;uuml;nde kullanılan taklit yazı bloğu olarak tanımlanır. Lipsum, oluşturulacak şablon ve taslaklarda i&amp;ccedil;erik yerine ge&amp;ccedil;erek yazı bloğunu doldurmak i&amp;ccedil;in kullanılır.&lt;/p&gt;\r\n', 2500.00, 0, '', '', 0, '0', '0'),
+(44, 168, 13, '2022-01-13 12:05:12', 'dimg/urunfoto/61e015788cd65.jpeg', 'mehmetasafozturk.com', '', '&lt;p&gt;Satılık alan adı&amp;nbsp;&lt;/p&gt;\r\n', 1350.00, 0, '', '', 0, '0', '0');
 
 -- --------------------------------------------------------
 
@@ -474,7 +485,7 @@ ALTER TABLE `slider`
 -- Tablo için AUTO_INCREMENT değeri `urun`
 --
 ALTER TABLE `urun`
-  MODIFY `urun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `urun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yorum`

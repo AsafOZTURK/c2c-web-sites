@@ -142,17 +142,16 @@ if (isset($_POST['musteribilgiguncelle'])) {
 		WHERE kullanici_id = $kullanici_id
 		");
 
-    $kontrol = $kullaniciguncelle->execute(array(
-        'ad' => htmlspecialchars($_POST['kullanici_ad']), 
+	$kontrol = $kullaniciguncelle->execute(array(
+		'ad' => htmlspecialchars($_POST['kullanici_ad']),
 		'kullanici_soyad' => htmlspecialchars($_POST['kullanici_soyad']),
 		'tc' => htmlspecialchars($_POST['kullanici_tc']),
 		'gsm' => htmlspecialchars($_POST['kullanici_gsm'])
-    ));
+	));
 
 	if ($kontrol) {
 
 		Header("Location:../../hesabim.php?durum=ok");
-
 	} else {
 
 		Header("Location:../../hesabim.php?durum=no");
@@ -176,21 +175,20 @@ if (isset($_POST['adresbilgiguncelle'])) {
 		WHERE kullanici_id = $kullanici_id
 		");
 
-    $kontrol = $kullaniciguncelle->execute(array(
+	$kontrol = $kullaniciguncelle->execute(array(
 		'tip' => htmlspecialchars($_POST['kullanici_tip']),
 		'tc' => htmlspecialchars($_POST['kullanici_tc']),
 		'unvan' => htmlspecialchars($_POST['kullanici_unvan']),
-        'il' => htmlspecialchars($_POST['kullanici_il']), 
+		'il' => htmlspecialchars($_POST['kullanici_il']),
 		'ilce' => htmlspecialchars($_POST['kullanici_ilce']),
 		'adres' => htmlspecialchars($_POST['kullanici_adres']),
 		'vno' => htmlspecialchars($_POST['kullanici_vno']),
-		'vdaire' => htmlspecialchars($_POST['kullanici_vdaire']), 
-    ));
+		'vdaire' => htmlspecialchars($_POST['kullanici_vdaire']),
+	));
 
 	if ($kontrol) {
 
 		Header("Location:../../adres-bilgileri.php?durum=ok");
-
 	} else {
 
 		Header("Location:../../adres-bilgileri.php?durum=no");
@@ -204,21 +202,21 @@ if (isset($_POST['musterisifreguncelle'])) {
 	$kullanici_passwordone = $_POST['kullanici_passwordone'];
 	$kullanici_passwordtwo = $_POST['kullanici_passwordtwo'];
 
-	$kullanicisor = $db ->prepare("SELECT * FROM kullanici WHERE kullanici_password=:pass");
-	$kullanicisor -> execute(array(
+	$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_password=:pass");
+	$kullanicisor->execute(array(
 		'pass' => $eski_sifre
 	));
 
-	$kontrol = $kullanicisor -> rowCount();
+	$kontrol = $kullanicisor->rowCount();
 
-	if ($kontrol == 0 ) {
+	if ($kontrol == 0) {
 		Header("Location:../../sifre-guncelle.php?durum=eskisifrehatali");
 		exit;
 	}
 
 	if ($kullanici_passwordone == $kullanici_passwordtwo) {
 
-		if (strlen($kullanici_passwordone) >= 6  ) {
+		if (strlen($kullanici_passwordone) >= 6) {
 
 			$yenisifre = md5($kullanici_passwordone);
 			$kullanici_id = $_SESSION['userkullanici_id'];
@@ -229,30 +227,24 @@ if (isset($_POST['musterisifreguncelle'])) {
 			");
 
 			$kontrol = $kullaniciguncelle->execute(array(
-				'pass' => htmlspecialchars($yenisifre)				
+				'pass' => htmlspecialchars($yenisifre)
 			));
 
 			if ($kontrol) {
 
 				Header("Location:../../sifre-guncelle.php?durum=ok");
-
 			} else {
 
 				Header("Location:../../sifre-guncelle.php?durum=no");
 			}
-
 		} else {
 
 			Header("Location:../../sifre-guncelle.php?durum=eksiksifre");
-
 		}
-
 	} else {
 
 		Header("Location:../../sifre-guncelle.php?durum=uyumsuzsifre");
-
 	}
-
 }
 
 
@@ -264,10 +256,10 @@ if (isset($_POST['profilresimguncelle'])) {
 		exit;
 	}
 
-	$iziniuzantilar = array('jpeg','png','jpg');
-	$ext = strtolower(substr($_FILES['kullanici_magazafoto']["name"],strpos($_FILES['kullanici_magazafoto']["name"],'.')+1));
+	$iziniuzantilar = array('jpeg', 'png', 'jpg');
+	$ext = strtolower(substr($_FILES['kullanici_magazafoto']["name"], strpos($_FILES['kullanici_magazafoto']["name"], '.') + 1));
 
-	if (in_array($ext, $iziniuzantilar)=== false) {
+	if (in_array($ext, $iziniuzantilar) === false) {
 		echo "Dosya biçimi tanımsız";
 		Header("Location:../../profilfoto-guncelle.php?durum=uzantıkabuledilmiyor");
 		exit;
@@ -279,17 +271,17 @@ if (isset($_POST['profilresimguncelle'])) {
 	//image resize işlemleri
 	include "simpleimage.php";
 	$image = new SimpleImage();
-	$image -> load($tmp_name);
-	$image -> resize(128,128);
-	$image -> save ($tmp_name);
+	$image->load($tmp_name);
+	$image->resize(128, 128);
+	$image->save($tmp_name);
 
-	
+
 	$uploads_dir = '../../dimg/userimage';
 
-	
+
 
 	$uniq = uniqid();
-	$refimgyol = substr($uploads_dir, 6) . "/" . $uniq.".".$ext;
+	$refimgyol = substr($uploads_dir, 6) . "/" . $uniq . "." . $ext;
 
 	@move_uploaded_file($tmp_name, "$uploads_dir/$uniq.$ext");
 
@@ -336,27 +328,26 @@ if (isset($_POST['musterimagazabasvuru'])) {
 		WHERE kullanici_id = $kullanici_id
 		");
 
-    $kontrol = $kullaniciguncelle->execute(array(
+	$kontrol = $kullaniciguncelle->execute(array(
 		'tip' => htmlspecialchars($_POST['kullanici_tip']),
-		'ad' => htmlspecialchars($_POST['kullanici_ad']), 
+		'ad' => htmlspecialchars($_POST['kullanici_ad']),
 		'kullanici_soyad' => htmlspecialchars($_POST['kullanici_soyad']),
 		'gsm' => htmlspecialchars($_POST['kullanici_gsm']),
 		'banka' => htmlspecialchars($_POST['kullanici_banka']),
 		'iban' => htmlspecialchars($_POST['kullanici_iban']),
 		'tc' => htmlspecialchars($_POST['kullanici_tc']),
 		'unvan' => htmlspecialchars($_POST['kullanici_unvan']),
-        'il' => htmlspecialchars($_POST['kullanici_il']), 
+		'il' => htmlspecialchars($_POST['kullanici_il']),
 		'ilce' => htmlspecialchars($_POST['kullanici_ilce']),
 		'adres' => htmlspecialchars($_POST['kullanici_adres']),
 		'vno' => htmlspecialchars($_POST['kullanici_vno']),
 		'vdaire' => htmlspecialchars($_POST['kullanici_vdaire']),
 		'magaza' => 1
-    ));
+	));
 
 	if ($kontrol) {
 
 		Header("Location:../../magaza-basvuru.php");
-
 	} else {
 
 		Header("Location:../../magaza-basvuru.php?durum=no");
@@ -372,10 +363,10 @@ if (isset($_POST['urunekle'])) {
 		exit;
 	}
 
-	$iziniuzantilar = array('jpeg','png','jpg');
-	$ext = strtolower(substr($_FILES['urunfoto_resimyol']["name"],strpos($_FILES['urunfoto_resimyol']["name"],'.')+1));
+	$iziniuzantilar = array('jpeg', 'png', 'jpg');
+	$ext = strtolower(substr($_FILES['urunfoto_resimyol']["name"], strpos($_FILES['urunfoto_resimyol']["name"], '.') + 1));
 
-	if (in_array($ext, $iziniuzantilar)=== false) {
+	if (in_array($ext, $iziniuzantilar) === false) {
 		echo "Dosya biçimi tanımsız";
 		Header("Location:../../urun-ekle.php?durum=uzantıkabuledilmiyor");
 		exit;
@@ -387,17 +378,17 @@ if (isset($_POST['urunekle'])) {
 	//image resize işlemleri
 	include "simpleimage.php";
 	$image = new SimpleImage();
-	$image -> load($tmp_name);
-	$image -> resize(829,422);
-	$image -> save ($tmp_name);
+	$image->load($tmp_name);
+	$image->resize(829, 422);
+	$image->save($tmp_name);
 
-	
+
 	$uploads_dir = '../../dimg/urunfoto';
 
-	
+
 
 	$uniq = uniqid();
-	$refimgyol = substr($uploads_dir, 6) . "/" . $uniq.".".$ext;
+	$refimgyol = substr($uploads_dir, 6) . "/" . $uniq . "." . $ext;
 
 	@move_uploaded_file($tmp_name, "$uploads_dir/$uniq.$ext");
 
@@ -424,9 +415,129 @@ if (isset($_POST['urunekle'])) {
 
 	if ($insert) {
 		Header("Location:../../urunlerim.php?durum=ok");
-
 	} else {
 
 		Header("Location:../../urun-ekle.php?durum=no");
 	}
+}
+
+//Ürün düzenleme işlemleri 
+if (isset($_POST['urunduzenle'])) {
+
+	if ($_FILES['urunfoto_resimyol']['size'] > 0) {
+		//Fotoğraf varsa yapılcak işlemler
+
+		if ($_FILES['urunfoto_resimyol']['size'] > 171400) { //dosya biçimi sorgulama
+			echo "Dosya boyutu çok büyük";
+			Header("Location:../../urun-duzenle.php?durum=dosyacokbuyuk&urun_id=$urun_id");
+			exit;
+		}
+
+		$izinliuzantilar = array('jpeg','png','jpg');
+		$ext = strtolower(substr($_FILES['urunfoto_resimyol']["name"], strpos($_FILES['urunfoto_resimyol']["name"], '.') + 1));
+
+		if (in_array($ext, $izinliuzantilar) === false) {
+			echo "Dosya biçimi tanımsız";
+			Header("Location:../../urun-duzenle.php?urun_id=$urun_id&durum=uzantıkabuledilmiyor");
+			exit;
+		}
+
+		@$tmp_name = $_FILES['urunfoto_resimyol']["tmp_name"];
+		@$name = seo($_FILES['urunfoto_resimyol']["name"]);
+
+		//image resize işlemleri
+		include "simpleimage.php";
+		$image = new SimpleImage();
+		$image->load($tmp_name);
+		$image->resize(128, 128);
+		$image->save($tmp_name);
+
+		$uploads_dir = '../../dimg/urunfoto';
+
+		$uniq = uniqid();
+		$refimgyol = substr($uploads_dir, 6) . "/" . $uniq . "." . $ext;
+
+		@move_uploaded_file($tmp_name, "$uploads_dir/$uniq.$ext");
+
+		$urun_id= $_POST['urun_id'];
+
+		$duzenle = $db -> prepare("UPDATE urun SET
+			kategori_id=:kategori,
+			urunfoto_resimyol=:foto,
+			urun_ad=:ad,
+			urun_detay=:detay,
+			urun_fiyat=:fiyat
+		WHERE urun_id= $urun_id
+		");
+
+		$update = $duzenle->execute(array(
+			'foto' => $refimgyol,
+			'ad' => htmlspecialchars($_POST['urun_ad']),
+			'detay' => htmlspecialchars($_POST['urun_detay']),
+			'fiyat' => htmlspecialchars($_POST['urun_fiyat']),
+			'kategori' => htmlspecialchars($_POST['kategori_id'])
+			));
+
+		if ($update) {
+
+			$resimsilunlink = $_POST['eski_yol'];
+			unlink("../../$resimsilunlink");
+
+			Header("Location:../../urun-duzenle.php?urun_id=$urun_id&durum=ok");
+		} else {
+
+			Header("Location:../../urun-duzenle.php?urun_id=$urun_id&durum=no");
+		}
+	} else {
+		//fotoğrf güncelleme olmadan yapılacak işlemler
+		$urun_id= $_POST['urun_id'];
+
+		$duzenle = $db->prepare("UPDATE urun SET
+			kategori_id=:kategori,
+			urun_ad=:ad,
+			urun_detay=:detay,
+			urun_fiyat=:fiyat
+		WHERE urun_id=$urun_id
+		");
+
+		$update = $duzenle->execute(array(
+			'ad' => htmlspecialchars($_POST['urun_ad']),
+			'detay' => htmlspecialchars($_POST['urun_detay']),
+			'fiyat' => htmlspecialchars($_POST['urun_fiyat']),
+			'kategori' => htmlspecialchars($_POST['kategori_id'])
+			));
+
+		if ($update) {
+
+			Header("Location:../../urun-duzenle.php?urun_id=$urun_id&durum=ok");
+
+		} else {
+
+			Header("Location:../../urun-duzenle.php?urun_id=$urun_id&durum=no");
+
+		}
+	}
+}
+
+if ($_GET['urunsil'] == 'ok') {
+
+	$urun_id = $_GET['urun_id'];
+
+	$sil = $db->prepare("DELETE FROM urun WHERE urun_id=:id");
+	$kontrol = $sil->execute(array(
+		'id' => $urun_id
+	));
+
+	if ($kontrol) {
+
+		$resimsilunlink = $_GET['urunfoto_resimyol'];
+		unlink("../../$resimsilunlink");
+
+		Header("Location:../../urunlerim.php?sil=ok");
+
+	} else {
+
+		Header("Location:../../urunlerim.php?sil=hata");
+	}
+
 }
