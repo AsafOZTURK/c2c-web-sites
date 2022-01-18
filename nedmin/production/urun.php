@@ -44,10 +44,9 @@ $urunsor->execute();
                                         <thead>
                                             <tr>
                                                 <th>Ürün Kodu</th>
+                                                <th>Ürün Resim</th>
                                                 <th>Ürün Adı</th>
                                                 <th>Ürün Fiyat</th>
-                                                <th>Ürün Stok</th>
-                                                <th></th>
                                                 <th>Ürün Durum</th>
                                                 <th>Öne Çıkarma</th>
                                                 <th></th>
@@ -60,10 +59,9 @@ $urunsor->execute();
                                             while ($uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)) { ?>
                                                 <tr>
                                                     <td width="20"><?php echo $uruncek["urun_id"]; ?></td>
+                                                    <td><center><img src="../../<?php echo $uruncek['urunfoto_resimyol']; ?>" height="50"></center></td>
                                                     <td><?php echo $uruncek["urun_ad"]; ?></td>
                                                     <td><?php echo $uruncek["urun_fiyat"]; ?></td>
-                                                    <td><?php echo $uruncek["urun_stok"]; ?></td>
-                                                    <td><a href="urun-galeri.php?urun_id=<?php echo $uruncek['urun_id'];?>"><center><button class="btn btn-succes btn-xs">Fotoğraf İşlemleri</button></center></a></td>
                                                     <td align="center">
 
                                                         <?php
@@ -87,7 +85,7 @@ $urunsor->execute();
 
                                                     </td>
                                                     <td align="center"><a href="urun-duzenle.php?urun_id=<?php echo $uruncek["urun_id"]; ?>"><button class="btn-primary btn-xs">Düzenle</button></a></td>
-                                                    <td align="center"><a href="../netting/islem.php?urun_id=<?php echo $uruncek["urun_id"]; ?>&urunsil=ok"><button class="btn-danger btn-xs">Sil</button></a></td>
+                                                    <td align="center"><a onclick="return confirm('Bu ürünü silmek istediğinize emin misiniz?')" href="../netting/islem.php?urun_id=<?php echo $uruncek["urun_id"]; ?>&urunsil=ok"><button class="btn-danger btn-xs">Sil</button></a></td>
                                                 </tr>
                                             <?php } ?>
 

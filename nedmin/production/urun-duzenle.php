@@ -62,6 +62,13 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC);
                             </div>
                             <!-- kategori seçme bitiş -->
                             <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Ürün Fiyat<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <img src="../../<?php echo $uruncek['urunfoto_resimyol']; ?>" width="300">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Ürün Adı<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -80,17 +87,15 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC);
                             </div>
 
                             <script type="text/javascript">
-                                CKEDITOR.replace('editor1',
-                                    {
-                                        filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
-                                        filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
-                                        filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
-                                        filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                                        filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                                        filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
-                                        forcePasteAsPlainText: true
-                                    }
-                                );
+                                CKEDITOR.replace('editor1', {
+                                    filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
+                                    filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
+                                    filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
+                                    filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                    filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                    filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                                    forcePasteAsPlainText: true
+                                });
                             </script>
 
                             <!-- Ck Editör Bitiş -->
@@ -101,27 +106,7 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC);
                                     <input type="text" id="first-name" name="urun_fiyat" value="<?php echo $uruncek["urun_fiyat"]; ?>" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Ürün Video<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="urun_video" value="<?php echo $uruncek["urun_video"]; ?>" required class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Ürün Keyword<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="urun_keyword" value="<?php echo $uruncek["urun_keyword"]; ?>" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Ürün Stok<span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="urun_stok" value="<?php echo $uruncek["urun_stok"]; ?>" required class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Ürün Durum<span class="required">*</span>
                                 </label>

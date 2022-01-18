@@ -421,7 +421,7 @@ if (isset($_POST['urunekle'])) {
 	}
 }
 
-//Ürün düzenleme işlemleri 
+
 if (isset($_POST['urunduzenle'])) {
 
 	if ($_FILES['urunfoto_resimyol']['size'] > 0) {

@@ -96,7 +96,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
     <!-- jquery.counterup js -->
     <script src="js\jquery.counterup.min.js"></script>
     <script src="js\waypoints.min.js"></script>
-    
+
     <!-- Modernizr Js -->
     <script src="js\modernizr-2.8.3.min.js"></script>
 
@@ -195,14 +195,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                                     </div>
                                                 </div>
                                                 <ul>
-                                                    <li><a href="hesabim.php">Profil Düzenleme</a></li>
-                                                    <li><a href="#">Portfolio</a></li>
-                                                    <li><a href="#">Account Setting</a></li>
-                                                    <li><a href="#">Downloads</a></li>
-                                                    <li><a href="#">Wishlist</a></li>
-                                                    <li><a href="#">Upload Item</a></li>
-                                                    <li><a href="#">Statement</a></li>
-                                                    <li><a href="#">Withdraws</a></li>
+                                                    <li><a href="hesabim.php">Ayarlar</a></li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -241,60 +234,18 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                     <div class="container">
                         <nav id="desktop-nav">
                             <ul>
-                                <li class="active"><a href="index.php">Anasayfa</a>
-                                    <ul>
-                                        <li><a href="index.htm">Home 1</a></li>
-                                        <li><a href="index2.htm">Home 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.htm">About</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="mega-menu-area">
-                                        <li>
-                                            <a href="index.htm">Home 1</a>
-                                            <a href="index2.htm">Home 2</a>
-                                            <a href="about.htm">About</a>
-                                            <a href="product-page-grid.htm">Product Grid</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-page-list.htm">Product List</a>
-                                            <a href="product-category-grid.htm">Category Grid</a>
-                                            <a href="product-category-list.htm">Category List</a>
-                                            <a href="single-product.htm">Product Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="profile.htm">Profile</a>
-                                            <a href="favourites-grid.htm">Favourites Grid</a>
-                                            <a href="favourites-list.htm">Favourites List</a>
-                                            <a href="settings.htm">Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="upload-products.htm">Upload Products</a>
-                                            <a href="sales-statement.htm">Sales Statement</a>
-                                            <a href="withdrawals.htm">Withdrawals</a>
-                                            <a href="404.htm">404</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="product-page-grid.htm">WordPress</a></li>
-                                <li><a href="product-category-grid.htm">Joomla</a></li>
-                                <li><a href="product-category-list.htm">Plugins</a></li>
-                                <li><a href="product-page-list.htm">Components</a></li>
-                                <li><a href="product-category-grid.htm">PSD</a></li>
-                                <li><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.htm">Blog</a></li>
-                                        <li><a href="single-blog.htm">Blog Details</a></li>
-                                        <li class="has-child-menu"><a href="#">Second Level</a>
-                                            <ul class="thired-level">
-                                                <li><a href="index.htm">Thired Level 1</a></li>
-                                                <li><a href="index.htm">Thired Level 2</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.htm">Contact</a></li>
-                                <li><a href="help.htm">Help</a></li>
+                                <li class="actiVe"><a href="index.php">ANASAYFA</a></li>
+                                <?php
+                                $kategorisor = $db->prepare("SELECT * FROM kategori WHERE kategori_onecikar=:onecikar ORDER BY kategori_sira ASC");
+                                $kategorisor->execute(array(
+                                    'onecikar' => 1
+                                ));
+
+                                while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
+                                    <li><a href="#"><?php echo $kategoricek['kategori_ad']; ?></a></li>
+
+                                <?php }
+                                ?>
                             </ul>
                         </nav>
                     </div>
@@ -308,60 +259,18 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul>
-                                        <li class="active"><a href="index.php">Anasayfa</a>
-                                            <ul>
-                                                <li><a href="index.htm">Home 1</a></li>
-                                                <li><a href="index2.htm">Home 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="about.htm">About</a></li>
-                                        <li><a href="#">Pages</a>
-                                            <ul class="mega-menu-area">
-                                                <li>
-                                                    <a href="index.htm">Home 1</a>
-                                                    <a href="index2.htm">Home 2</a>
-                                                    <a href="about.htm">About</a>
-                                                    <a href="product-page-grid.htm">Product Grid</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-page-list.htm">Product List</a>
-                                                    <a href="product-category-grid.htm">Category Grid</a>
-                                                    <a href="product-category-list.htm">Category List</a>
-                                                    <a href="single-product.htm">Product Details</a>
-                                                </li>
-                                                <li>
-                                                    <a href="profile.htm">Profile</a>
-                                                    <a href="favourites-grid.htm">Favourites Grid</a>
-                                                    <a href="favourites-list.htm">Favourites List</a>
-                                                    <a href="settings.htm">Settings</a>
-                                                </li>
-                                                <li>
-                                                    <a href="upload-products.htm">Upload Products</a>
-                                                    <a href="sales-statement.htm">Sales Statement</a>
-                                                    <a href="withdrawals.htm">Withdrawals</a>
-                                                    <a href="404.htm">404</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="product-page-grid.htm">WordPress</a></li>
-                                        <li><a href="product-category-grid.htm">Joomla</a></li>
-                                        <li><a href="product-category-list.htm">Plugins</a></li>
-                                        <li><a href="product-page-list.htm">Components</a></li>
-                                        <li><a href="product-category-grid.htm">PSD</a></li>
-                                        <li><a href="#">Blog</a>
-                                            <ul>
-                                                <li><a href="blog.htm">Blog</a></li>
-                                                <li><a href="single-blog.htm">Blog Details</a></li>
-                                                <li class="has-child-menu"><a href="#">Second Level</a>
-                                                    <ul class="thired-level">
-                                                        <li><a href="index.htm">Thired Level 1</a></li>
-                                                        <li><a href="index.htm">Thired Level 2</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.htm">Contact</a></li>
-                                        <li><a href="help.htm">Help</a></li>
+                                        <li class="actiVe"><a href="index.php">ANASAYFA</a></li>
+                                        <?php
+                                        $kategorisor = $db->prepare("SELECT * FROM kategori WHERE kategori_onecikar=:onecikar ORDER BY kategori_sira ASC");
+                                        $kategorisor->execute(array(
+                                            'onecikar' => 1
+                                        ));
+
+                                        while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
+                                            <li><a href="#"><?php echo $kategoricek['kategori_ad']; ?></a></li>
+
+                                        <?php }
+                                        ?>
                                     </ul>
                                 </nav>
                             </div>

@@ -23,7 +23,8 @@ $kategorisor->execute();
                                 <?php } elseif ($_GET['sil'] == 'no') { ?>
 
                                     <b style="color:red;">İşlem Başarısız!..</b>
-                                <?php } ?>
+                                <?php }
+                                ?>
 
                             </small></h2>
                         <div class="clearfix"></div>
@@ -48,6 +49,7 @@ $kategorisor->execute();
                                                 <th>Kategori Seo Url</th>
                                                 <th>Kategori Sıra</th>
                                                 <th>Kategori Durum</th>
+                                                <th>Öne Çıkarma</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -68,6 +70,24 @@ $kategorisor->execute();
                                                         <?php } else { ?>
                                                             <button class="btn btn-danger">Pasif</button>
                                                         <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+
+                                                            <?php
+
+                                                            if ($kategoricek['kategori_onecikar'] == 1) { ?>
+
+                                                                <button class="btn btn-danger btn-xs">Kaldır</button>
+
+                                                            <?php } else if ($kategoricek['kategori_onecikar'] == 0) { ?>
+
+                                                                <button class="btn btn-success btn-xs">Öne Çıkar</button>
+
+                                                            <?php }
+                                                            ?>
+
+                                                        </center>
                                                     </td>
                                                     <td align="center"><a href="kategori-duzenle.php?kategori_id=<?php echo $kategoricek["kategori_id"]; ?>"><button class="btn-primary btn-xs">Düzenle</button></a></td>
                                                     <td align="center"><a href="../netting/islem.php?kategori_id=<?php echo $kategoricek["kategori_id"]; ?>&kategorisil=ok"><button class="btn-danger btn-xs">Sil</button></a></td>

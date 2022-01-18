@@ -28,7 +28,7 @@ $kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC);
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="../netting/islem.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <form action="../netting/adminislem.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Sayfa İD<span class="required">*</span>
                                 </label>
@@ -70,6 +70,20 @@ $kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC);
                                                                 echo 'selected=""';
                                                             } ?>>Pasif</option>
 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kategori Öne Çıkar<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select id="heard" name="kategori_onecikar" required class="form-control">
+
+                                        <option value="1" <?php echo $kategoricek["kategori_onecikar"] == '1' ? 'selected""' : ''; ?>>Aktif</option>
+
+                                        <option value="0" <?php if ($kategoricek["kategori_onecikar"] == 0) {
+                                                                echo 'selected=""';
+                                                            } ?>>Pasif</option>
                                     </select>
                                 </div>
                             </div>

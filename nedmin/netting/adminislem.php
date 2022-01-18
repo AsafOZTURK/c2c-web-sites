@@ -157,3 +157,35 @@ if (isset($_POST['magazabasvuruonay'])) {
 		Header("Location:../production/magazalar.php?durum=no");
 	}
 }
+
+
+if (isset($_POST['kategoriduzenle'])) {
+
+	$kategori_id = $_POST['kategori_id'];
+	$kategori_seourl = seo($_POST["kategori_ad"]);
+
+	$ayarkaydet = $db->prepare("UPDATE kategori SET
+		kategori_ad=:kategori_ad,
+        kategori_sira=:kategori_sira,
+        kategori_seourl=:kategori_seourl,
+		kategori_durum=:kategori_durum,
+		kategori_onecikar=:onecikar
+		WHERE kategori_id={$_POST['kategori_id']}");
+
+	$update = $ayarkaydet->execute(array(
+		'kategori_ad' => $_POST['kategori_ad'],
+		'kategori_sira' => $_POST['kategori_sira'],
+		'kategori_seourl' => $kategori_seourl,
+		'kategori_durum' => $_POST['kategori_durum'],
+		'onecikar' => $_POST['kategori_onecikar']
+	));
+
+
+	if ($update) {
+
+		Header("Location:../production/kategori-duzenle.php?kategori_id=$kategori_id&durum=ok");
+	} else {
+
+		Header("Location:../production/kategori-duzenle.php?kategori_id=$kategori_id&durum=no");
+	}
+}
