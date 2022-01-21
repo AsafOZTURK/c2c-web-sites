@@ -44,16 +44,7 @@ require_once "header.php";
                 $kullanici_id= $uruncek['kullanici_id'];
                 $kategori_id = $uruncek['kategori_id']; 
 
-                $kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_id=:id");
-                $kullanicisor->execute(array('id' => $kullanici_id));
-                $kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC);
-
-                $kategorisor = $db->prepare("SELECT * FROM kategori WHERE kategori_id=:kategori_id");
-                $kategorisor->execute(array(
-                    'kategori_id' => $kategori_id
-                ));
-                $kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC);
-
+                // İNNER JOİN İŞLEMİ KULLANILACAK
 
                 ?>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 onecikan plugins component">
