@@ -38,6 +38,7 @@ izinsizerisimkontrol();
                             if ($kullanicicek['kullanici_magaza'] == 0) { ?>
 
                                 <p><i>Başvuru işlemini tamamlamak için tüm bilgilerinizin eksiksiz ve hatasız olması gerekmektedir!</i></p>
+
                                 <form class="form-horizontal" action="nedmin/netting/kullanici.php" method="POST" id="personal-info-form">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Hesap Türü</label>
@@ -143,7 +144,7 @@ izinsizerisimkontrol();
 
                                     <div class="form-group">
                                         <div class="col-sm-12" align="right">
-                                            <button type="submit" name="musterimagazabasvuru" class="btn update-btn" id="email-setting-save">Bilgileri Güncelle</button>
+                                            <button type="submit" name="musterimagazabasvuru" class="btn update-btn" id="email-setting-save">Başvuru Yap</button>
                                         </div>
                                     </div>
                                 </form>
@@ -154,9 +155,9 @@ izinsizerisimkontrol();
                                 </div>
                             <?php } else { ?>
                                 <div class="alert alert-success">
-                                <strong>Mağazanız Onaylandı Yönetim Panelinden Mağazanızı Yönetebilirsiniz</strong>
-                            </div> 
-                            <?php } ?> 
+                                    <strong>Mağazanız Onaylandı Yönetim Panelinden Mağazanızı Yönetebilirsiniz</strong>
+                                </div>
+                            <?php } ?>
 
                         </div>
                     </div>
