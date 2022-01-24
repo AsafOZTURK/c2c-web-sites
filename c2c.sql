@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 22 Oca 2022, 20:04:50
+-- Üretim Zamanı: 24 Oca 2022, 20:01:46
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -175,9 +175,9 @@ CREATE TABLE `kullanici` (
 
 INSERT INTO `kullanici` (`kullanici_id`, `subMerchantKey`, `kullanici_magaza`, `kullanici_magazafoto`, `kullanici_zaman`, `kullanici_resim`, `kullanici_tc`, `kullanici_banka`, `kullanici_iban`, `kullanici_ad`, `kullanici_soyad`, `kullanici_mail`, `kullanici_gsm`, `kullanici_password`, `kullanici_adres`, `kullanici_il`, `kullanici_ilce`, `kullanici_unvan`, `kullanici_tip`, `kullanici_vdaire`, `kullanici_vno`, `kullanici_yetki`, `kullanici_durum`, `iptal_nedeni`) VALUES
 (167, '', '0', 'dimg/userimage/26579indir-jpg', '2022-01-04 13:51:48', 'https://i.tmgrup.com.tr/gq/original/17-06/22/user_male_circle_filled1600.png', '12345678999', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', 'Anadolu Üniversitesi', 'e10adc3949ba59abbe56e057f20f883e', 'Anadolu Üniversitesi', 'Eskişehir', 'Tepebaşı', '', 'PERSONAL', '', '', '5', 1, ''),
-(168, '', '2', 'dimg/userimage/61dd716824d66.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Mehmet Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
+(168, '', '2', 'dimg/userimage/61dd716824d66.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Kahramanmaraş', 'Onikişubat', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
 (169, '', '2', 'dimg/userimage/61e0132a21ce4.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Halkbank', '4345 4345 4345 4345', 'Cabbar', 'Deneme', 'cabbar@com.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Satıcı', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
-(170, '', '2', 'dimg/userimage/61eb22e0f29fa.jpg', '2022-01-22 00:16:24', '', '11122233344', 'VakıfBank', '5656 5656 5656 5656', 'Beyza', ' ÖZTÜRK', 'beyza@giris.com', '05366363636', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme', 'İstanbul', 'Beşiktaş', 'Modacı', 'PERSONAL', 'İstanbul', '888888888888', '1', 1, '');
+(170, '', '2', 'dimg/userimage/61eb22e0f29fa.jpg', '2022-01-22 00:16:24', '', '11122233344', 'VakıfBank', '5656 5656 5656 5656', 'Beyza', 'ÖZTÜRK', 'beyza@giris.com', '05366363636', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme', 'İstanbul', 'Beşiktaş', 'Modacı', 'PERSONAL', 'İstanbul', '888888888888', '1', 1, '');
 
 -- --------------------------------------------------------
 
@@ -323,7 +323,7 @@ INSERT INTO `urun` (`urun_id`, `kullanici_id`, `kategori_id`, `urun_zaman`, `uru
 (42, 168, 10, '2022-01-13 12:01:47', 'dimg/urunfoto/61e014ab11a39.jpg', 'Mobil Uyumlu  Shop Template V1', 'mobil-uyumlu-shop-template-v1', '<p>Lorem Ipsum, masa&uuml;st&uuml; yayıncılık ve basın yayın sekt&ouml;r&uuml;nde kullanılan taklit yazı bloğu olarak tanımlanır. Lipsum, oluşturulacak şablon ve taslaklarda i&ccedil;erik yerine ge&ccedil;erek yazı bloğunu doldurmak i&ccedil;in kullanılır.</p>\r\n', 1000.00, 0, '', '', 0, '1', '1'),
 (43, 168, 12, '2022-01-13 12:02:24', 'dimg/urunfoto/61e014d0d0b0d.jpg', 'Responsive Kişisel Tanıtım Sitesi Template V5', 'responsive-kisisel-tanitim-sitesi-template-v5', '<p>Lorem Ipsum, masa&uuml;st&uuml; yayıncılık ve basın yayın sekt&ouml;r&uuml;nde kullanılan taklit yazı bloğu olarak tanımlanır. Lipsum, oluşturulacak şablon ve taslaklarda i&ccedil;erik yerine ge&ccedil;erek yazı bloğunu doldurmak i&ccedil;in kullanılır.</p>\r\n', 2500.00, 0, '', '', 0, '1', '1'),
 (44, 168, 13, '2022-01-13 12:05:12', 'dimg/urunfoto/61e015788cd65.jpeg', 'mehmetasafozturk.com', 'mehmetasafozturk-com', '<p>Satılık alan adı&nbsp;</p>\r\n', 1350.00, 0, '', '', 0, '1', '1'),
-(47, 169, 10, '2022-01-18 13:33:39', 'dimg/urunfoto/61eb26e99fcb0.jpeg', 'Mobil Uyumlu Blog ', '', '&lt;p&gt;Deenememsdkjfhodsıfgfd&lt;/p&gt;\r\n', 258.00, 0, '', '', 0, '1', '0'),
+(47, 169, 10, '2022-01-18 13:33:39', 'dimg/urunfoto/61eebf9ea2047.jpeg', 'Mobil Uyumlu Blog ', '', '&lt;p&gt;Deenememsdkjfhodsıfgfd&lt;/p&gt;\r\n', 258.00, 0, '', '', 0, '1', '1'),
 (48, 170, 11, '2022-01-21 21:27:23', 'dimg/urunfoto/61eb253b3b347.jpeg', 'Masaüstü Bilgisayar', '', '&lt;p&gt;DetayDetayDetayDetayDetayDetayDetay&lt;/p&gt;\r\n', 3600.00, 0, '', '', 0, '1', '1'),
 (49, 170, 15, '2022-01-21 21:31:08', 'dimg/urunfoto/61eb261c09145.jpeg', 'Eğitim Yönetim Paneli V6', '', '&lt;p&gt;Detayy&lt;/p&gt;\r\n', 1850.00, 0, '', '', 0, '1', '1'),
 (50, 169, 14, '2022-01-21 21:32:15', 'dimg/urunfoto/61eb265fa8175.jpeg', 'Bostarap Hazır Template V8', '', '&lt;p&gt;Detay&lt;/p&gt;\r\n', 9999.00, 0, '', '', 0, '1', '1');

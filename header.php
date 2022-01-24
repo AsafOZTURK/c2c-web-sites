@@ -30,10 +30,10 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html class="no-js" lang="tr">
+<html lang="tr">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>
@@ -99,6 +99,9 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 
     <!-- Modernizr Js -->
     <script src="js\modernizr-2.8.3.min.js"></script>
+
+    <!-- Nouislider Style CSS -->
+    <link rel="stylesheet" href="vendor\noUiSlider\nouislider.min.css">
 
     <!-- Ck EDİTÖR -->
     <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
@@ -242,7 +245,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                 ));
 
                                 while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
-                                    <li><a href="#"><?php echo $kategoricek['kategori_ad']; ?></a></li>
+                                    <li><a href="kategori-<?= seo($kategoricek['kategori_ad']). "-" . $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></a></li>
 
                                 <?php }
                                 ?>
@@ -267,8 +270,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                         ));
 
                                         while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
-                                            <li><a href="#"><?php echo $kategoricek['kategori_ad']; ?></a></li>
-
+                                            <li><a href="kategori-<?=seo($kategoricek['kategori_ad']). "-" . $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></a></li>
                                         <?php }
                                         ?>
                                     </ul>

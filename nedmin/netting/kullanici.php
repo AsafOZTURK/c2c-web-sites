@@ -449,7 +449,7 @@ if (isset($_POST['urunduzenle'])) {
 		include "simpleimage.php";
 		$image = new SimpleImage();
 		$image->load($tmp_name);
-		$image->resize(128, 128);
+		$image->resize(829, 422);
 		$image->save($tmp_name);
 
 		$uploads_dir = '../../dimg/urunfoto';

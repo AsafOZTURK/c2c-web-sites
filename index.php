@@ -236,7 +236,7 @@ require_once "header.php";
                         </div>
                         <div class="item-content">
                             <div class="item-info">
-                                <h3><a href="#"><?php echo $uruncek['urun_ad']; ?></a></h3>
+                                <h3><a href="urun-<?= seo($uruncek['urun_ad']) . "-" . $uruncek['urun_id']; ?>"><?php echo $uruncek['urun_ad']; ?></a></h3>
                                 <span><a href="kategori-<?= seo($uruncek['kategori_ad']). "-" . $uruncek['kategori_id']; ?>"><?php echo $uruncek['kategori_ad']; ?></a></span>
                                 <div class="price"><?php echo $uruncek['urun_fiyat']; ?>TL</div>
                             </div>
@@ -245,10 +245,10 @@ require_once "header.php";
                                     <div class="img-wrapper">
                                         <img src="<?php echo $uruncek['kullanici_magazafoto']; ?>" style="width:36px;" alt="profile" class="img-responsive img-circle">
                                     </div>
-                                    <span><?php echo $uruncek['kullanici_ad']; ?></span>
+                                    <span><a href="magaza-<?= seo($uruncek['kullanici_ad']."-".$uruncek['kullanici_soyad']) . "-" . $uruncek['kullanici_id']; ?>"><?php echo $uruncek['kullanici_ad']; ?></a></span>
                                 </div>
                                 <div class="profile-rating">
-                                    <a href="#">Tüm ürünleri</a>
+                                    
                                     <!-- <ul>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>

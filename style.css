@@ -2799,7 +2799,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
   box-shadow: 0 0 0;
   border-radius: 0;
   background: transparent;
-  text-transform: lowercase;
+ 
   color: #111111;
   font-size: 18px;
   top: 14px;
@@ -3477,7 +3477,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
   transform: translateY(-50%);
   z-index: 1;
   color: #263238;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 700;
 }
 .single-item-grid .item-content .item-profile {
@@ -3683,7 +3683,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 }
 .product-list-view .single-item-list .item-content .item-info .item-sale-info .price {
   color: #263238;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 15px;
 }

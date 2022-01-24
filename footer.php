@@ -116,8 +116,14 @@
 
             <!-- Custom Js -->
             <script src="js\main.js" type="text/javascript"></script>
+            <!-- jquery-->
+            <script src="js\jquery-2.2.4.min.js" type="text/javascript"></script>
 
+            <!-- Nouislider Js -->
+            <script src="vendor\noUiSlider\nouislider.min.js" type="text/javascript"></script>
+
+            <!-- wNumb Js -->
+            <script src="js\wNumb.js" type="text/javascript"></script>
             
             </body>
-
             </html>
