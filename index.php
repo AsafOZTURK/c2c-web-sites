@@ -9,16 +9,18 @@ require_once "header.php";
         <div class="main-banner2-wrapper">
             <h1>AlışverişGO Sitesine Hoşgeldiniz</h1>
             <p><?php echo $ayarcek['ayar_description']; ?></p>
-            <div class="banner-search-area input-group">
-                <input class="form-control" placeholder="Aradığınız ürünü girin . . ." type="text">
-                <span class="input-group-addon">
-                    <button type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
+            <form action="arama-detay.php" method="post">
+                <div class="banner-search-area input-group">
+                    <input class="form-control" name="searchkeyword" minlength="3" required placeholder="Aradığınız ürünü girin . . ." type="text">
+                    <span class="input-group-addon">
+                        <button type="submit" name="search">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <!-- Main Banner 1 Area End Here -->
 <div class="trending-products-area section-space-default">
@@ -237,7 +239,7 @@ require_once "header.php";
                         <div class="item-content">
                             <div class="item-info">
                                 <h3><a href="urun-<?= seo($uruncek['urun_ad']) . "-" . $uruncek['urun_id']; ?>"><?php echo $uruncek['urun_ad']; ?></a></h3>
-                                <span><a href="kategori-<?= seo($uruncek['kategori_ad']). "-" . $uruncek['kategori_id']; ?>"><?php echo $uruncek['kategori_ad']; ?></a></span>
+                                <span><a href="kategori-<?= seo($uruncek['kategori_ad']) . "-" . $uruncek['kategori_id']; ?>"><?php echo $uruncek['kategori_ad']; ?></a></span>
                                 <div class="price"><?php echo $uruncek['urun_fiyat']; ?>TL</div>
                             </div>
                             <div class="item-profile">
@@ -245,10 +247,10 @@ require_once "header.php";
                                     <div class="img-wrapper">
                                         <img src="<?php echo $uruncek['kullanici_magazafoto']; ?>" style="width:36px;" alt="profile" class="img-responsive img-circle">
                                     </div>
-                                    <span><a href="magaza-<?= seo($uruncek['kullanici_ad']."-".$uruncek['kullanici_soyad']) . "-" . $uruncek['kullanici_id']; ?>"><?php echo $uruncek['kullanici_ad']; ?></a></span>
+                                    <span><a href="magaza-<?= seo($uruncek['kullanici_ad'] . "-" . $uruncek['kullanici_soyad']) . "-" . $uruncek['kullanici_id']; ?>"><?php echo $uruncek['kullanici_ad']; ?></a></span>
                                 </div>
                                 <div class="profile-rating">
-                                    
+
                                     <!-- <ul>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>

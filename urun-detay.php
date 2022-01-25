@@ -136,19 +136,19 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                         <div class="sidebar-item-inner">
                             <h3 class="sidebar-item-title">Ürün Sahibi</h3>
                             <div class="sidebar-author-info">
-                                <img style="width:70px;height:70px;"src="<?php echo $uruncek['kullanici_magazafoto']; ?>" alt="product" class="img-responsive">
+                                <img style="width:72px;height:72px;"src="<?php echo $uruncek['kullanici_magazafoto']; ?>" alt="product" class="img-responsive">
                                 <div class="sidebar-author-content">
                                     <h3><?php echo $uruncek['kullanici_ad'] . " " .$uruncek['kullanici_soyad']?></h3>
                                     <a href="magaza-<?= seo($uruncek['kullanici_ad']."-".$uruncek['kullanici_soyad']) . "-" . $uruncek['kullanici_id']; ?>" class="view-profile">Profili Görüntüle</a>
                                 </div>
                             </div>
-                            <!-- <ul class="sidebar-badges-item">
+                            <ul class="sidebar-badges-item">
                                 <li><img src="img\profile\badges1.png" alt="badges" class="img-responsive"></li>
                                 <li><img src="img\profile\badges2.png" alt="badges" class="img-responsive"></li>
                                 <li><img src="img\profile\badges3.png" alt="badges" class="img-responsive"></li>
                                 <li><img src="img\profile\badges4.png" alt="badges" class="img-responsive"></li>
                                 <li><img src="img\profile\badges5.png" alt="badges" class="img-responsive"></li>
-                            </ul> -->
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 24 Oca 2022, 20:01:46
+-- Üretim Zamanı: 25 Oca 2022, 20:25:46
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -131,7 +131,7 @@ INSERT INTO `kategori` (`kategori_id`, `kategori_ad`, `kategori_onecikar`, `kate
 (10, 'HTML Template', '1', 'html-template', 1, '1'),
 (11, 'PHP Script', '1', 'php-script', 2, '1'),
 (12, 'Wordpress Template', '1', 'wordpress-template', 3, '1'),
-(13, 'Alan Adı', '1', 'alan-adi', 4, '1'),
+(13, 'Alan Adı', '0', 'alan-adi', 8, '1'),
 (14, 'Bootstrap 4', '1', 'bootstrap-4', 6, '1'),
 (15, 'LMS Eğitim Paneli', '1', 'lms-egitim-paneli', 7, '1'),
 (16, 'JavaScript Script', '1', 'javascript-script', 7, '1');
@@ -326,7 +326,8 @@ INSERT INTO `urun` (`urun_id`, `kullanici_id`, `kategori_id`, `urun_zaman`, `uru
 (47, 169, 10, '2022-01-18 13:33:39', 'dimg/urunfoto/61eebf9ea2047.jpeg', 'Mobil Uyumlu Blog ', '', '&lt;p&gt;Deenememsdkjfhodsıfgfd&lt;/p&gt;\r\n', 258.00, 0, '', '', 0, '1', '1'),
 (48, 170, 11, '2022-01-21 21:27:23', 'dimg/urunfoto/61eb253b3b347.jpeg', 'Masaüstü Bilgisayar', '', '&lt;p&gt;DetayDetayDetayDetayDetayDetayDetay&lt;/p&gt;\r\n', 3600.00, 0, '', '', 0, '1', '1'),
 (49, 170, 15, '2022-01-21 21:31:08', 'dimg/urunfoto/61eb261c09145.jpeg', 'Eğitim Yönetim Paneli V6', '', '&lt;p&gt;Detayy&lt;/p&gt;\r\n', 1850.00, 0, '', '', 0, '1', '1'),
-(50, 169, 14, '2022-01-21 21:32:15', 'dimg/urunfoto/61eb265fa8175.jpeg', 'Bostarap Hazır Template V8', '', '&lt;p&gt;Detay&lt;/p&gt;\r\n', 9999.00, 0, '', '', 0, '1', '1');
+(50, 169, 14, '2022-01-21 21:32:15', 'dimg/urunfoto/61eb265fa8175.jpeg', 'Bostarap Hazır Template V8', '', '&lt;p&gt;Detay&lt;/p&gt;\r\n', 9999.00, 0, '', '', 0, '1', '1'),
+(51, 169, 14, '2022-01-21 21:32:15', 'dimg/urunfoto/61eb265fa8175.jpeg', 'mobil', '', '&lt;p&gt;Detay&lt;/p&gt;\r\n', 9999.00, 0, '', '', 0, '1', '1');
 
 -- --------------------------------------------------------
 
@@ -482,7 +483,7 @@ ALTER TABLE `slider`
 -- Tablo için AUTO_INCREMENT değeri `urun`
 --
 ALTER TABLE `urun`
-  MODIFY `urun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `urun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- Tablo için AUTO_INCREMENT değeri `yorum`
 --

@@ -238,6 +238,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                         <nav id="desktop-nav">
                             <ul>
                                 <li class="actiVe"><a href="index.php">ANASAYFA</a></li>
+                                <li><a href="kategoriler.php">Kategoriler</a></li>
                                 <?php
                                 $kategorisor = $db->prepare("SELECT * FROM kategori WHERE kategori_onecikar=:onecikar ORDER BY kategori_sira ASC");
                                 $kategorisor->execute(array(
