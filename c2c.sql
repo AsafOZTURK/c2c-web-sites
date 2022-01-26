@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 25 Oca 2022, 20:25:46
+-- Üretim Zamanı: 26 Oca 2022, 20:47:48
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -177,7 +177,8 @@ INSERT INTO `kullanici` (`kullanici_id`, `subMerchantKey`, `kullanici_magaza`, `
 (167, '', '0', 'dimg/userimage/26579indir-jpg', '2022-01-04 13:51:48', 'https://i.tmgrup.com.tr/gq/original/17-06/22/user_male_circle_filled1600.png', '12345678999', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', 'Anadolu Üniversitesi', 'e10adc3949ba59abbe56e057f20f883e', 'Anadolu Üniversitesi', 'Eskişehir', 'Tepebaşı', '', 'PERSONAL', '', '', '5', 1, ''),
 (168, '', '2', 'dimg/userimage/61dd716824d66.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Kahramanmaraş', 'Onikişubat', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
 (169, '', '2', 'dimg/userimage/61e0132a21ce4.jpg', '2022-01-04 14:28:29', '', '12345678911', 'Halkbank', '4345 4345 4345 4345', 'Cabbar', 'Deneme', 'cabbar@com.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Satıcı', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
-(170, '', '2', 'dimg/userimage/61eb22e0f29fa.jpg', '2022-01-22 00:16:24', '', '11122233344', 'VakıfBank', '5656 5656 5656 5656', 'Beyza', 'ÖZTÜRK', 'beyza@giris.com', '05366363636', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme', 'İstanbul', 'Beşiktaş', 'Modacı', 'PERSONAL', 'İstanbul', '888888888888', '1', 1, '');
+(170, '', '2', 'dimg/userimage/61eb22e0f29fa.jpg', '2022-01-22 00:16:24', '', '11122233344', 'VakıfBank', '5656 5656 5656 5656', 'Beyza', 'ÖZTÜRK', 'beyza@giris.com', '05366363636', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme', 'İstanbul', 'Beşiktaş', 'Modacı', 'PERSONAL', 'İstanbul', '888888888888', '1', 1, ''),
+(171, '', '0', 'dimg/userimage/61f1869deae13.jpg', '2022-01-22 00:16:24', '', '654654654656', 'Denizbank', '9696969696969696', 'Müşteri ', 'Hesabı', 'musteri@giris.com', '0523 223 23 23', 'e10adc3949ba59abbe56e057f20f883e', 'Alt mahalle No/50', 'Bursa', 'Merkez', '', 'PERSONAL', '', '', '1', 1, '');
 
 -- --------------------------------------------------------
 
@@ -229,41 +230,47 @@ CREATE TABLE `sepet` (
 CREATE TABLE `siparis` (
   `siparis_id` int(11) NOT NULL,
   `siparis_zaman` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `siparis_no` int(11) DEFAULT NULL,
   `kullanici_id` int(11) NOT NULL,
-  `siparis_toplam` float NOT NULL,
-  `siparis_tip` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
-  `siparis_banka` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
-  `siparis_odeme` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
+  `kullanici_idsatici` int(11) NOT NULL,
+  `siparis_odeme` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `siparis`
 --
 
-INSERT INTO `siparis` (`siparis_id`, `siparis_zaman`, `siparis_no`, `kullanici_id`, `siparis_toplam`, `siparis_tip`, `siparis_banka`, `siparis_odeme`) VALUES
-(5825, '2022-01-02 13:51:08', NULL, 10, 8815, 'Banka Havalesi', 'Halkbank', '0');
+INSERT INTO `siparis` (`siparis_id`, `siparis_zaman`, `kullanici_id`, `kullanici_idsatici`, `siparis_odeme`) VALUES
+(750042, '2022-01-26 18:20:32', 171, 170, '1'),
+(750043, '2022-01-26 20:47:17', 171, 168, '1');
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `siparisdetay`
+-- Tablo için tablo yapısı `siparis_detay`
 --
 
-CREATE TABLE `siparisdetay` (
+CREATE TABLE `siparis_detay` (
   `siparisdetay_id` int(11) NOT NULL,
   `siparis_id` int(11) NOT NULL,
+  `kullanici_id` int(11) NOT NULL,
+  `kullanici_idsatici` int(11) NOT NULL,
   `urun_id` int(11) NOT NULL,
   `urun_fiyat` float(9,2) NOT NULL,
-  `urun_adet` int(3) NOT NULL
+  `urun_adet` int(3) NOT NULL,
+  `siparisdetay_kargozaman` datetime NOT NULL,
+  `siparisdetay_kargoad` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `siparisdetay_kargono` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `siparisdetay_onay` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0',
+  `siparisdetay_onayzaman` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
--- Tablo döküm verisi `siparisdetay`
+-- Tablo döküm verisi `siparis_detay`
 --
 
-INSERT INTO `siparisdetay` (`siparisdetay_id`, `siparis_id`, `urun_id`, `urun_fiyat`, `urun_adet`) VALUES
-(5, 5825, 23, 2650.00, 1);
+INSERT INTO `siparis_detay` (`siparisdetay_id`, `siparis_id`, `kullanici_id`, `kullanici_idsatici`, `urun_id`, `urun_fiyat`, `urun_adet`, `siparisdetay_kargozaman`, `siparisdetay_kargoad`, `siparisdetay_kargono`, `siparisdetay_onay`, `siparisdetay_onayzaman`) VALUES
+(53, 750042, 171, 170, 48, 3600.00, 0, '0000-00-00 00:00:00', '', '', '1', '2022-01-26 21:20:32'),
+(54, 750043, 171, 168, 43, 2500.00, 0, '0000-00-00 00:00:00', '', '', '0', '2022-01-26 23:47:17');
 
 -- --------------------------------------------------------
 
@@ -412,9 +419,9 @@ ALTER TABLE `siparis`
   ADD PRIMARY KEY (`siparis_id`);
 
 --
--- Tablo için indeksler `siparisdetay`
+-- Tablo için indeksler `siparis_detay`
 --
-ALTER TABLE `siparisdetay`
+ALTER TABLE `siparis_detay`
   ADD PRIMARY KEY (`siparisdetay_id`);
 
 --
@@ -453,7 +460,7 @@ ALTER TABLE `kategori`
 -- Tablo için AUTO_INCREMENT değeri `kullanici`
 --
 ALTER TABLE `kullanici`
-  MODIFY `kullanici_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `kullanici_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 --
 -- Tablo için AUTO_INCREMENT değeri `menu`
 --
@@ -468,12 +475,12 @@ ALTER TABLE `sepet`
 -- Tablo için AUTO_INCREMENT değeri `siparis`
 --
 ALTER TABLE `siparis`
-  MODIFY `siparis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5826;
+  MODIFY `siparis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750044;
 --
--- Tablo için AUTO_INCREMENT değeri `siparisdetay`
+-- Tablo için AUTO_INCREMENT değeri `siparis_detay`
 --
-ALTER TABLE `siparisdetay`
-  MODIFY `siparisdetay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `siparis_detay`
+  MODIFY `siparisdetay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- Tablo için AUTO_INCREMENT değeri `slider`
 --

@@ -104,10 +104,22 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                                 <h2><b><?php echo $uruncek['urun_fiyat']; ?><span style="font-size:20px;">TL</span></b></h2>
                             </div>
                             <hr>
-                            <ul class="sidebar-product-btn">
-                                <li> <a href="#" class="add-to-cart-btn" id="cart-button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Satın AL</a></li>
-                                
-                            </ul>
+                            <form action="odeme.php" method="post">
+                                <ul class="sidebar-product-btn">
+                                    <input type="hidden" name="urun_id" value="<?php echo $uruncek['urun_id']; ?>">
+                                    <?php
+
+                                    if ($_SESSION['userkullanici_id'] != $uruncek['kullanici_id']) { ?>
+
+                                        <li><button class="add-to-cart-btn fa fa-shopping-cart" aria-hidden="true" type="submit" name="satinal"> Satın Al</button></li>
+
+                                    <?php } else {
+
+                                    }
+                                    ?>
+                                </ul>
+                            </form>
+
                         </div>
                     </div>
                     <div class="sidebar-item">
@@ -136,10 +148,10 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                         <div class="sidebar-item-inner">
                             <h3 class="sidebar-item-title">Ürün Sahibi</h3>
                             <div class="sidebar-author-info">
-                                <img style="width:72px;height:72px;"src="<?php echo $uruncek['kullanici_magazafoto']; ?>" alt="product" class="img-responsive">
+                                <img style="width:72px;height:72px;" src="<?php echo $uruncek['kullanici_magazafoto']; ?>" alt="product" class="img-responsive">
                                 <div class="sidebar-author-content">
-                                    <h3><?php echo $uruncek['kullanici_ad'] . " " .$uruncek['kullanici_soyad']?></h3>
-                                    <a href="magaza-<?= seo($uruncek['kullanici_ad']."-".$uruncek['kullanici_soyad']) . "-" . $uruncek['kullanici_id']; ?>" class="view-profile">Profili Görüntüle</a>
+                                    <h3><?php echo $uruncek['kullanici_ad'] . " " . $uruncek['kullanici_soyad'] ?></h3>
+                                    <a href="magaza-<?= seo($uruncek['kullanici_ad'] . "-" . $uruncek['kullanici_soyad']) . "-" . $uruncek['kullanici_id']; ?>" class="view-profile">Profili Görüntüle</a>
                                 </div>
                             </div>
                             <ul class="sidebar-badges-item">

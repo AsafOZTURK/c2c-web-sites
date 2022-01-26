@@ -5,7 +5,7 @@
         if ($kullanicicek['kullanici_magaza'] != 2) { ?>
             <li><a href="magaza-basvuru.php">Mağaza Başvuru</a></li>
         <?php } ?>
-        <li><a href="sifre-guncelle.php">Siparişlerim</a></li>
+        <li><a href="siparislerim.php">Siparişlerim</a></li>
         <li><a href="hesabim.php">Kişisel Bilgiler</a></li>
         <li><a href="adres-bilgileri.php">Adres Bilgilerim</a></li>
         <li><a href="sifre-guncelle.php">Şifre Güncelleme</a></li>
