@@ -574,13 +574,10 @@ if (isset($_POST['sipariskaydet'])) {
 		if ($insert) {
 
 			Header("Location:../../siparislerim.php?durum=ok");
-
 		} else {
 
 			Header("Location:../../siparislerim.php?durum=basarisiz");
-
 		}
-
 	} else {
 
 		Header("Location:../../404.php");
@@ -592,22 +589,83 @@ if ($_GET['urunonay'] == 'ok') {
 	$siparis_id = $_GET['siparis_id'];
 	$siparisdetay_id = $_GET['siparisdetay_id'];
 
-	$siparisdetayguncelle = $db -> prepare("UPDATE siparis_detay SET
+	$siparisdetayguncelle = $db->prepare("UPDATE siparis_detay SET
 	siparisdetay_onay=:onay
 	WHERE siparisdetay_id = {$siparisdetay_id}
 	");
 
-	$update = $siparisdetayguncelle -> execute(array(
-		'onay' => 1
+	$update = $siparisdetayguncelle->execute(array(
+		'onay' => 2
 	));
 
 	if ($update) {
 
 		Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=ok");
+	} else {
+
+		Header("Location:../../siparis-detay?siparis_id=$siparis_id&durum=no");
+	}
+}
+
+
+if ($_GET['urunteslim'] == 'ok') {
+	$siparis_id = $_GET['siparis_id'];
+	$siparisdetay_id = $_GET['siparisdetay_id'];
+
+	$siparisdetayguncelle = $db->prepare("UPDATE siparis_detay SET
+	siparisdetay_onay=:onay
+	WHERE siparisdetay_id = {$siparisdetay_id}
+	");
+
+	$update = $siparisdetayguncelle->execute(array(
+		'onay' => 1
+	));
+
+	if ($update) {
+
+		Header("Location:../../yeni-siparisler.php?siparis_id=$siparis_id&durum=ok");
+	} else {
+
+		Header("Location:../../yeni-siparisler?siparis_id=$siparis_id&durum=no");
+	}
+}
+
+
+if (isset($_POST['yorumkaydet'])) {
+	$siparis_id = $_POST['siparis_id'];
+
+	$kaydet = $db->prepare("INSERT INTO yorum SET
+		kullanici_id=:id,
+		urun_id=:urun_id,
+		yorum_detay=:yorum,
+		yorum_puan=:puan
+	");
+
+	$insert = $kaydet->execute(array(
+		'id' => $_SESSION['userkullanici_id'],
+		'urun_id' => $_POST['urun_id'],
+		'yorum' => htmlspecialchars($_POST['yorum_detay']),
+		'puan' => htmlspecialchars($_POST['yorum_puan'])
+	));
+
+	if ($insert) {
+		$siparisdetayguncelle = $db->prepare("UPDATE siparis_detay SET
+			siparisdetay_yorum=:yorum
+			WHERE siparis_id = {$siparis_id}
+			");
+
+		$update = $siparisdetayguncelle->execute(array(
+			'yorum' => 1
+			));
+			
+		if (!$update) {
+			Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=yorumbasarisiz");
+		}
+
+		Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=ok");
 
 	} else {
-		
-		Header("Location:../../siparis-detay?siparis_id=$siparis_id&durum=no");
 
+		Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=no");
 	}
 }

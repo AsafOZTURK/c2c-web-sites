@@ -71,7 +71,95 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                                         <p><?php echo $uruncek['urun_detay']; ?></p>
                                     </div>
                                     <div class="tab-pane fade" id="yorumlar">
-                                        <p>Porem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+                                        <div class="media">
+                                            <?php
+                                            $yorumsor = $db->prepare("SELECT * 
+                                            FROM yorum 
+                                            INNER JOIN kullanici
+                                            ON kullanici.kullanici_id=yorum.kullanici_id
+                                            WHERE urun_id=:urun_id 
+                                            ORDER BY yorum_zaman 
+                                            ");
+                                            $yorumsor->execute(array(
+                                                'urun_id' => $_GET['urun_id']
+                                            ));
+
+                                            while ($yorumcek = $yorumsor->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading user_name">
+                                                        <img class="img-responsive" src="<?php echo $yorumcek['kullanici_magazafoto']; ?>" style="border-radius:30px; float:left; margin-right:10px; width:32px; height:32px;" alt="">
+                                                        <?php echo $yorumcek['kullanici_ad'] . " " . $yorumcek['kullanici_soyad']; ?>
+                                                        <?php
+                                                        switch ($yorumcek['yorum_puan']) {
+                                                            case '5': ?>
+                                                                <ul style="float:right;" class="default-rating">
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li>(<span><?php echo $yorumcek['yorum_puan']; ?></span> )</li>
+                                                                </ul><?php
+                                                                break;
+                                                            case '4': ?>
+                                                                <ul style="float:right;" class="default-rating">
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li>(<span><?php echo $yorumcek['yorum_puan']; ?></span> )</li>
+                                                                </ul><?php
+                                                                break;
+                                                            case '3': ?>
+                                                                <ul style="float:right;" class="default-rating">
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li>(<span><?php echo $yorumcek['yorum_puan']; ?></span> )</li>
+                                                                </ul><?php
+                                                                break;
+                                                            case '2': ?>
+                                                                <ul style="float:right;" class="default-rating">
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li>(<span><?php echo $yorumcek['yorum_puan']; ?></span> )</li>
+                                                                </ul><?php
+                                                                break;
+                                                            case '1': ?>
+                                                                <ul style="float:right;" class="default-rating">
+                                                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li>(<span><?php echo $yorumcek['yorum_puan']; ?></span> )</li>
+                                                                </ul><?php
+                                                                break;
+                                                                case '0': ?>
+                                                                    <ul style="float:right;" class="default-rating">
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                    <li><i style="color:gray;" class="fa fa-star" aria-hidden="true"></i></li>
+                                                                        <li>(<span><?php echo $yorumcek['yorum_puan']; ?></span> )</li>
+                                                                    </ul><?php
+                                                                    break;
+                                                        }
+                                                        ?>
+                                                    </h4>
+                                                    <?php echo $yorumcek['yorum_detay']; ?>
+                                                </div>
+                                                <hr>
+                                            <?php }
+                                            ?>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -114,7 +202,6 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                                         <li><button class="add-to-cart-btn fa fa-shopping-cart" aria-hidden="true" type="submit" name="satinal"> Satın Al</button></li>
 
                                     <?php } else {
-
                                     }
                                     ?>
                                 </ul>
@@ -126,7 +213,12 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                         <div class="sidebar-item-inner">
                             <ul class="sidebar-sale-info">
                                 <li><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
-                                <li>05</li>
+                                <?php
+                                $urunsay = $db->prepare("SELECT COUNT(urun_id) AS say FROM siparis_detay WHERE urun_id=:id");
+                                $urunsay->execute(array('id' => $_GET['urun_id']));
+                                $saycek = $urunsay->fetch(PDO::FETCH_ASSOC); 
+                                ?>
+                                <li><?php echo $saycek['say']; ?></li>
                                 <li>Satış</li>
                             </ul>
                         </div>

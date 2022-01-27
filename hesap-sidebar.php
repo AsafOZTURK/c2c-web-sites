@@ -19,8 +19,8 @@
             <li class="active"><a href="javascript:void(0)"><b>MAĞAZA İŞLEMLERİ</b></a></li>
             <li><a href="urunlerim.php">Ürünlerim</a></li>
             <li><a href="urun-ekle.php">Ürün Ekle</a></li>
-            <li><a href="sifre-guncelle.php">Yeni Siparişlerim</a></li>
-            <li><a href="sifre-guncelle.php">Tamamlanan Siparişler</a></li>
+            <li><a href="yeni-siparisler.php">Yeni Siparişlerim</a></li>
+            <li><a href="tamamlanan-siparisler.php">Tamamlanan Siparişler</a></li>
             <li><a href="sifre-guncelle.php">Mesajlar</a></li>
             <li><a href="sifre-guncelle.php">Ayarlar</a></li>
         </ul>

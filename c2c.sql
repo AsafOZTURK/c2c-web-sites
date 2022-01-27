@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 26 Oca 2022, 20:47:48
+-- Üretim Zamanı: 27 Oca 2022, 20:30:44
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -240,8 +240,8 @@ CREATE TABLE `siparis` (
 --
 
 INSERT INTO `siparis` (`siparis_id`, `siparis_zaman`, `kullanici_id`, `kullanici_idsatici`, `siparis_odeme`) VALUES
-(750042, '2022-01-26 18:20:32', 171, 170, '1'),
-(750043, '2022-01-26 20:47:17', 171, 168, '1');
+(750044, '2022-01-27 18:12:00', 171, 168, '1'),
+(750045, '2022-01-27 20:07:36', 169, 168, '1');
 
 -- --------------------------------------------------------
 
@@ -260,17 +260,18 @@ CREATE TABLE `siparis_detay` (
   `siparisdetay_kargozaman` datetime NOT NULL,
   `siparisdetay_kargoad` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `siparisdetay_kargono` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
-  `siparisdetay_onay` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0',
-  `siparisdetay_onayzaman` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `siparisdetay_onay` enum('0','1','2') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0',
+  `siparisdetay_onayzaman` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `siparisdetay_yorum` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `siparis_detay`
 --
 
-INSERT INTO `siparis_detay` (`siparisdetay_id`, `siparis_id`, `kullanici_id`, `kullanici_idsatici`, `urun_id`, `urun_fiyat`, `urun_adet`, `siparisdetay_kargozaman`, `siparisdetay_kargoad`, `siparisdetay_kargono`, `siparisdetay_onay`, `siparisdetay_onayzaman`) VALUES
-(53, 750042, 171, 170, 48, 3600.00, 0, '0000-00-00 00:00:00', '', '', '1', '2022-01-26 21:20:32'),
-(54, 750043, 171, 168, 43, 2500.00, 0, '0000-00-00 00:00:00', '', '', '0', '2022-01-26 23:47:17');
+INSERT INTO `siparis_detay` (`siparisdetay_id`, `siparis_id`, `kullanici_id`, `kullanici_idsatici`, `urun_id`, `urun_fiyat`, `urun_adet`, `siparisdetay_kargozaman`, `siparisdetay_kargoad`, `siparisdetay_kargono`, `siparisdetay_onay`, `siparisdetay_onayzaman`, `siparisdetay_yorum`) VALUES
+(55, 750044, 171, 168, 44, 1350.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-27 21:12:00', '1'),
+(56, 750045, 169, 168, 44, 1350.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-27 23:07:36', '1');
 
 -- --------------------------------------------------------
 
@@ -347,6 +348,7 @@ CREATE TABLE `yorum` (
   `kullanici_id` int(11) NOT NULL,
   `urun_id` int(11) NOT NULL,
   `yorum_detay` text COLLATE utf8_turkish_ci NOT NULL,
+  `yorum_puan` int(11) NOT NULL,
   `yorum_zaman` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `yorum_onay` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
@@ -355,16 +357,9 @@ CREATE TABLE `yorum` (
 -- Tablo döküm verisi `yorum`
 --
 
-INSERT INTO `yorum` (`yorum_id`, `kullanici_id`, `urun_id`, `yorum_detay`, `yorum_zaman`, `yorum_onay`) VALUES
-(8, 10, 11, '<p>terterterertterterterertterterterertterterterertterterterertterterterertterterterertterterterertterterterertterterterertterterterertterterterert</p>\r\n', '2021-12-24 16:05:20', '1'),
-(9, 11, 11, 'aaaaaaaaaaa', '2021-12-24 16:06:45', '1'),
-(13, 10, 18, '\r\ndenemeekofjsodıpgjpadıohgpıadhgpıaddhpboıadfhbpoıadfjpbıochjğboc\r\ndenemeekofjsodıpgjpadıohgpıadhgpıaddhpboıadfhbpoıadfjpbıochjğbocdenemeekofjsodıpgjpadıohgpıadhgpıaddhpboıadfhbpoıadfjpbıochjğbocdenemeekofjsodıpgjpadıohgpıadhgpıaddhpboıadfhbpoıadfjpbıochjğbocdenemeekofjsodıpgjpadıohgpıadhgpıaddhpboıadfhbpoıadfjpbıochjğboc', '2021-12-24 18:33:35', '0'),
-(14, 12, 16, '<p>D&uuml;zg&uuml;n bir yorum satırı</p>\r\n', '2021-12-24 22:25:56', '1'),
-(15, 10, 11, '534345', '2021-12-28 08:44:31', '0'),
-(16, 10, 11, '', '2021-12-28 08:44:37', '1'),
-(17, 10, 11, 'FSDHFIPHFPOIDHFPDSD', '2021-12-28 08:44:50', '1'),
-(18, 10, 19, 'rewrewrw', '2021-12-30 12:06:55', '0'),
-(19, 10, 19, 'rwerewrewrqer', '2021-12-30 12:07:10', '0');
+INSERT INTO `yorum` (`yorum_id`, `kullanici_id`, `urun_id`, `yorum_detay`, `yorum_puan`, `yorum_zaman`, `yorum_onay`) VALUES
+(22, 171, 44, 'KCBDPIBĞAODIBNĞOANVOJSBNVŞJCNBOJCKL', 1, '2022-01-27 19:39:35', '0'),
+(23, 169, 44, 'Çok güzel ürün. Muhteşem . Çok beğednmi', 5, '2022-01-27 20:08:15', '0');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -475,12 +470,12 @@ ALTER TABLE `sepet`
 -- Tablo için AUTO_INCREMENT değeri `siparis`
 --
 ALTER TABLE `siparis`
-  MODIFY `siparis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750044;
+  MODIFY `siparis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750046;
 --
 -- Tablo için AUTO_INCREMENT değeri `siparis_detay`
 --
 ALTER TABLE `siparis_detay`
-  MODIFY `siparisdetay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `siparisdetay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- Tablo için AUTO_INCREMENT değeri `slider`
 --
@@ -495,7 +490,7 @@ ALTER TABLE `urun`
 -- Tablo için AUTO_INCREMENT değeri `yorum`
 --
 ALTER TABLE `yorum`
-  MODIFY `yorum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `yorum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

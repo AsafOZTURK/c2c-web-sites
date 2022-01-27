@@ -59,7 +59,14 @@
                          </div>
                          <div align="center" class="single-item">
                              <div class="item-title">Toplam Satış:</div>
-                             <div class="item-name">100</div>
+                             <?php 
+                            $urunsay = $db->prepare("SELECT COUNT(kullanici_idsatici) AS say FROM siparis_detay WHERE kullanici_idsatici=:id");
+                            $urunsay->execute(array(
+                                'id' => $_GET['kullanici_id']
+                            ));
+                            $saycek = $urunsay->fetch(PDO::FETCH_ASSOC); 
+                            ?>
+                             <div class="item-name"><?php echo $saycek['say']; ?></div>
                          </div>
                      </div>
                  </div>
