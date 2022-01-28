@@ -84,6 +84,10 @@ $uruncek = $urunsor->fetch(PDO::FETCH_ASSOC)
                                                 'urun_id' => $_GET['urun_id']
                                             ));
 
+                                            if (!$yorumsor ->rowCount()) {
+                                                echo "Bu ürün için henüz yorum girilmemiştir";
+                                            }
+
                                             while ($yorumcek = $yorumsor->fetch(PDO::FETCH_ASSOC)) { ?>
                                                 <div class="media-body">
                                                     <h4 class="media-heading user_name">

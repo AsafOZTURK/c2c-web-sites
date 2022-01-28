@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 27 Oca 2022, 20:30:44
+-- Üretim Zamanı: 28 Oca 2022, 20:31:03
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -211,6 +211,33 @@ INSERT INTO `menu` (`menu_id`, `menu_ust`, `menu_ad`, `menu_detay`, `menu_url`, 
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `mesaj`
+--
+
+CREATE TABLE `mesaj` (
+  `mesaj_id` int(11) NOT NULL,
+  `mesaj_zaman` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mesaj_detay` text COLLATE utf8_turkish_ci NOT NULL,
+  `kullanici_gelen` int(11) NOT NULL,
+  `kullanici_gonderen` int(11) NOT NULL,
+  `mesaj_okunma` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `mesaj`
+--
+
+INSERT INTO `mesaj` (`mesaj_id`, `mesaj_zaman`, `mesaj_detay`, `kullanici_gelen`, `kullanici_gonderen`, `mesaj_okunma`) VALUES
+(5, '2022-01-28 20:01:03', 'YORUM 1', 169, 168, '0'),
+(6, '2022-01-28 20:01:12', '<p>FJGAŞUFHSDIFUHASDPIUFAS</p>\r\n', 170, 168, '0'),
+(7, '2022-01-28 20:01:31', 'DENEME1', 170, 171, '0'),
+(8, '2022-01-28 20:01:38', 'MESAJ3', 169, 171, '0'),
+(9, '2022-01-28 20:01:46', 'MESAJ 2', 168, 171, '0'),
+(10, '2022-01-28 20:24:29', '<p>Ben sizden bir &uuml;r&uuml;n almak istiyorum</p>\r\n', 168, 169, '0');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `sepet`
 --
 
@@ -358,7 +385,7 @@ CREATE TABLE `yorum` (
 --
 
 INSERT INTO `yorum` (`yorum_id`, `kullanici_id`, `urun_id`, `yorum_detay`, `yorum_puan`, `yorum_zaman`, `yorum_onay`) VALUES
-(22, 171, 44, 'KCBDPIBĞAODIBNĞOANVOJSBNVŞJCNBOJCKL', 1, '2022-01-27 19:39:35', '0'),
+(22, 171, 44, 'KCBDPIBĞAODIBNĞOANVOJSBNVŞJCNBOJCKL', 2, '2022-01-27 19:39:35', '0'),
 (23, 169, 44, 'Çok güzel ürün. Muhteşem . Çok beğednmi', 5, '2022-01-27 20:08:15', '0');
 
 --
@@ -400,6 +427,12 @@ ALTER TABLE `kullanici`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`menu_id`);
+
+--
+-- Tablo için indeksler `mesaj`
+--
+ALTER TABLE `mesaj`
+  ADD PRIMARY KEY (`mesaj_id`);
 
 --
 -- Tablo için indeksler `sepet`
@@ -461,6 +494,11 @@ ALTER TABLE `kullanici`
 --
 ALTER TABLE `menu`
   MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- Tablo için AUTO_INCREMENT değeri `mesaj`
+--
+ALTER TABLE `mesaj`
+  MODIFY `mesaj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Tablo için AUTO_INCREMENT değeri `sepet`
 --

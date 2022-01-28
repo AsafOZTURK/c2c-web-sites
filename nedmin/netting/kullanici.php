@@ -669,3 +669,30 @@ if (isset($_POST['yorumkaydet'])) {
 		Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=no");
 	}
 }
+
+
+if (isset($_POST['mesajgonder'])) {
+	echo $kullanici_gelen = $_POST['kullanici_gelen'];
+
+	$kaydet = $db->prepare("INSERT INTO mesaj SET
+		kullanici_gelen=:gelen,
+		kullanici_gonderen=:gonderen,
+		mesaj_detay=:mesaj
+	");
+
+	$insert = $kaydet->execute(array(
+		'gelen' => $kullanici_gelen,
+		'gonderen' => $_SESSION['userkullanici_id'],
+		'mesaj' => $_POST['mesaj_detay']
+	));
+
+	if ($insert) {
+
+		Header("Location:../../mesaj-gonder.php?kullanici_gelen=$kullanici_gelen&durum=ok");
+
+	} else {
+
+		Header("Location:../../mesaj-gonder.php?kullanici_gelen=$kullanici_gelen&durum=no");
+
+	}
+}
