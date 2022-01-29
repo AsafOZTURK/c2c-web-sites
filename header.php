@@ -162,23 +162,67 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 
                                         <li>
                                             <div class="notify-message">
-                                                <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>5</span></a>
+                                                <?php
+                                                $mesajsay = $db->prepare("SELECT 
+                                                 COUNT(mesaj_okunma) AS say 
+                                                 FROM mesaj 
+                                                 WHERE mesaj_okunma=:id
+                                                 AND kullanici_gelen=:kullanici_id
+                                                 ");
+                                                $mesajsay->execute(array(
+                                                    'id' => 0,
+                                                    'kullanici_id' => $_SESSION['userkullanici_id']
+                                                ));
+                                                $saycek = $mesajsay->fetch(PDO::FETCH_ASSOC);
+
+                                                ?>
+                                                <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i><span><?php echo $saycek['say']; ?></span></a>
                                                 <ul>
+                                                    <?php
+                                                    $mesajsor = $db->prepare("SELECT
+                                                        mesaj.*,kullanici.*
+                                                        FROM mesaj
+                                                        INNER JOIN kullanici
+                                                        ON mesaj.kullanici_gonderen=kullanici.kullanici_id
+                                                        WHERE mesaj.kullanici_gelen=:id
+                                                        AND mesaj_okunma=:okunma
+                                                        ORDER BY mesaj_okunma,mesaj_zaman DESC
+                                                        LIMIT 5
+                                                        ");
 
-                                                    <li>
-                                                        <div class="notify-message-img">
-                                                            <img class="img-responsive" src="img\profile\1.png" alt="profile">
-                                                        </div>
-                                                        <div class="notify-message-info">
-                                                            <div class="notify-message-sender">Kazi Fahim</div>
-                                                            <div class="notify-message-subject">Need WP Help!</div>
-                                                            <div class="notify-message-date">01 Dec, 2016</div>
-                                                        </div>
-                                                        <div class="notify-message-sign">
-                                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                                        </div>
-                                                    </li>
+                                                    $mesajsor->execute(array(
+                                                        'id' => $_SESSION['userkullanici_id'],
+                                                        'okunma' => 0
+                                                    ));
 
+                                                    if ($mesajsor->rowCount() == 0) { ?>
+                                                        <li>
+                                                            <div  class="notify-message-info">
+                                                                <div style="color:red !important; font-weight:bold;"class="notify-message-subject">Yeni Mesaj Yok</div>
+                                                            </div>
+                                                        </li>
+                                                    <?php }
+                                                    ?>
+                                                    <?php
+                                                    while ($mesajcek = $mesajsor->fetch(PDO::FETCH_ASSOC)) {
+                                                        $a = $mesajcek['kullanici_gonderen'];
+                                                    ?>
+                                                        <li>
+                                                            <div class="notify-message-img">
+                                                                <img class="img-responsive" src="<?php echo $mesajcek['kullanici_magazafoto']; ?>" alt="profile">
+                                                            </div>
+                                                            <div class="notify-message-info">
+                                                                <div class="notify-message-sender"><?php echo $mesajcek['kullanici_ad'] . " " . $mesajcek['kullanici_soyad']; ?></div>
+                                                                <a href="mesaj-detay.php?mesaj_id=<?php echo $mesajcek['mesaj_id']; ?>&kullanici_gonderen=<?php echo $a; ?>">
+                                                                    <div class="notify-message-subject" style="font-size:10px;">Mesajı Oku</div>
+                                                                </a>
+                                                                <div class="notify-message-date"><?php echo $mesajcek['mesaj_zaman']; ?></div>
+                                                            </div>
+                                                            <div class="notify-message-sign">
+                                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                            </div>
+                                                        </li>
+                                                    <?php } ?>
                                                 </ul>
                                             </div>
                                         </li>
@@ -191,7 +235,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                                     </div>
                                                     <div class="user-account-title">
                                                         <div class="user-account-name"><?php echo $kullanicicek['kullanici_ad']; ?></div>
-                                                        <div class="user-account-balance">$171.00</div>
+                                                        <div class="user-account-balance"></div>
                                                     </div>
                                                     <div class="user-account-dropdown">
                                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -246,7 +290,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                 ));
 
                                 while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
-                                    <li><a href="kategori-<?= seo($kategoricek['kategori_ad']). "-" . $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></a></li>
+                                    <li><a href="kategori-<?= seo($kategoricek['kategori_ad']) . "-" . $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></a></li>
 
                                 <?php }
                                 ?>
@@ -271,7 +315,7 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                         ));
 
                                         while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
-                                            <li><a href="kategori-<?=seo($kategoricek['kategori_ad']). "-" . $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></a></li>
+                                            <li><a href="kategori-<?= seo($kategoricek['kategori_ad']) . "-" . $kategoricek['kategori_id']; ?>"><?php echo $kategoricek['kategori_ad']; ?></a></li>
                                         <?php }
                                         ?>
                                     </ul>

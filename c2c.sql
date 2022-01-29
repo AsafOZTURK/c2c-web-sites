@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 28 Oca 2022, 20:31:03
+-- Üretim Zamanı: 29 Oca 2022, 21:25:13
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -228,12 +228,19 @@ CREATE TABLE `mesaj` (
 --
 
 INSERT INTO `mesaj` (`mesaj_id`, `mesaj_zaman`, `mesaj_detay`, `kullanici_gelen`, `kullanici_gonderen`, `mesaj_okunma`) VALUES
-(5, '2022-01-28 20:01:03', 'YORUM 1', 169, 168, '0'),
 (6, '2022-01-28 20:01:12', '<p>FJGAŞUFHSDIFUHASDPIUFAS</p>\r\n', 170, 168, '0'),
 (7, '2022-01-28 20:01:31', 'DENEME1', 170, 171, '0'),
 (8, '2022-01-28 20:01:38', 'MESAJ3', 169, 171, '0'),
 (9, '2022-01-28 20:01:46', 'MESAJ 2', 168, 171, '0'),
-(10, '2022-01-28 20:24:29', '<p>Ben sizden bir &uuml;r&uuml;n almak istiyorum</p>\r\n', 168, 169, '0');
+(10, '2022-01-28 20:24:29', '<p>Ben sizden bir &uuml;r&uuml;n almak istiyorum</p>\r\n', 168, 169, '0'),
+(11, '2022-01-29 19:35:10', '<p>Mesaj 2 cevabı</p>\r\n', 171, 168, '1'),
+(12, '2022-01-29 19:56:34', '<p>T&uuml;m mesajlarını okudum kardeşim</p>\r\n\r\n<p>&nbsp;</p>\r\n', 169, 168, '0'),
+(13, '2022-01-29 19:56:40', '<p>Aaaaa</p>\r\n', 169, 168, '1'),
+(14, '2022-01-29 19:57:31', '<p>aaaaaaaaaaaaaaaaaa</p>\r\n', 171, 168, '1'),
+(15, '2022-01-29 20:05:29', '<p>M&uuml;şteriden asafa mesaj 1</p>\r\n', 168, 171, '1'),
+(16, '2022-01-29 20:05:50', '<p>Asaftan m&uuml;şteriye mesaj 1</p>\r\n', 171, 168, '1'),
+(17, '2022-01-29 20:37:59', '<p>bildirim mesajı 111</p>\r\n', 168, 171, '0'),
+(18, '2022-01-29 20:43:44', '<p>DKJBADSVOJADSBVJISBDIBGF</p>\r\n', 168, 171, '1');
 
 -- --------------------------------------------------------
 
@@ -268,7 +275,16 @@ CREATE TABLE `siparis` (
 
 INSERT INTO `siparis` (`siparis_id`, `siparis_zaman`, `kullanici_id`, `kullanici_idsatici`, `siparis_odeme`) VALUES
 (750044, '2022-01-27 18:12:00', 171, 168, '1'),
-(750045, '2022-01-27 20:07:36', 169, 168, '1');
+(750045, '2022-01-27 20:07:36', 169, 168, '1'),
+(750046, '2022-01-29 21:15:50', 171, 168, '1'),
+(750047, '2022-01-29 21:15:57', 171, 170, '1'),
+(750048, '2022-01-29 21:16:02', 171, 168, '1'),
+(750049, '2022-01-29 21:16:07', 171, 168, '1'),
+(750050, '2022-01-29 21:16:13', 171, 168, '1'),
+(750051, '2022-01-29 21:16:19', 171, 169, '1'),
+(750052, '2022-01-29 21:16:24', 171, 168, '1'),
+(750053, '2022-01-29 21:16:29', 171, 168, '1'),
+(750054, '2022-01-29 21:16:34', 171, 168, '1');
 
 -- --------------------------------------------------------
 
@@ -298,7 +314,16 @@ CREATE TABLE `siparis_detay` (
 
 INSERT INTO `siparis_detay` (`siparisdetay_id`, `siparis_id`, `kullanici_id`, `kullanici_idsatici`, `urun_id`, `urun_fiyat`, `urun_adet`, `siparisdetay_kargozaman`, `siparisdetay_kargoad`, `siparisdetay_kargono`, `siparisdetay_onay`, `siparisdetay_onayzaman`, `siparisdetay_yorum`) VALUES
 (55, 750044, 171, 168, 44, 1350.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-27 21:12:00', '1'),
-(56, 750045, 169, 168, 44, 1350.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-27 23:07:36', '1');
+(56, 750045, 169, 168, 44, 1350.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-27 23:07:36', '1'),
+(57, 750046, 171, 168, 44, 1350.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:15:50', '1'),
+(58, 750047, 171, 170, 48, 3600.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:15:57', '1'),
+(59, 750048, 171, 168, 42, 1000.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:16:02', '1'),
+(60, 750049, 171, 168, 43, 2500.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:16:07', '1'),
+(61, 750050, 171, 168, 43, 2500.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:16:13', '1'),
+(62, 750051, 171, 169, 50, 9999.00, 0, '0000-00-00 00:00:00', '', '', '1', '2022-01-30 00:16:19', '0'),
+(63, 750052, 171, 168, 42, 1000.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:16:24', '1'),
+(64, 750053, 171, 168, 42, 1000.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:16:29', '1'),
+(65, 750054, 171, 168, 42, 1000.00, 0, '0000-00-00 00:00:00', '', '', '2', '2022-01-30 00:16:34', '1');
 
 -- --------------------------------------------------------
 
@@ -386,7 +411,15 @@ CREATE TABLE `yorum` (
 
 INSERT INTO `yorum` (`yorum_id`, `kullanici_id`, `urun_id`, `yorum_detay`, `yorum_puan`, `yorum_zaman`, `yorum_onay`) VALUES
 (22, 171, 44, 'KCBDPIBĞAODIBNĞOANVOJSBNVŞJCNBOJCKL', 2, '2022-01-27 19:39:35', '0'),
-(23, 169, 44, 'Çok güzel ürün. Muhteşem . Çok beğednmi', 5, '2022-01-27 20:08:15', '0');
+(23, 169, 44, 'Çok güzel ürün. Muhteşem . Çok beğednmi', 5, '2022-01-27 20:08:15', '0'),
+(24, 171, 44, 'Güzeş', 3, '2022-01-29 21:22:27', '0'),
+(25, 171, 48, 'İyi', 2, '2022-01-29 21:22:37', '0'),
+(26, 171, 42, 'Çok iyi', 5, '2022-01-29 21:22:47', '0'),
+(27, 171, 43, 'Çok kötü', 1, '2022-01-29 21:22:57', '0'),
+(28, 171, 43, 'Berbat', 1, '2022-01-29 21:23:05', '0'),
+(29, 171, 42, 'İdare eder\r\n', 3, '2022-01-29 21:23:15', '0'),
+(30, 171, 42, 'İyii', 4, '2022-01-29 21:23:24', '0'),
+(31, 171, 42, 'Muhteşem', 5, '2022-01-29 21:23:34', '0');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -498,7 +531,7 @@ ALTER TABLE `menu`
 -- Tablo için AUTO_INCREMENT değeri `mesaj`
 --
 ALTER TABLE `mesaj`
-  MODIFY `mesaj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `mesaj_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Tablo için AUTO_INCREMENT değeri `sepet`
 --
@@ -508,12 +541,12 @@ ALTER TABLE `sepet`
 -- Tablo için AUTO_INCREMENT değeri `siparis`
 --
 ALTER TABLE `siparis`
-  MODIFY `siparis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750046;
+  MODIFY `siparis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=750055;
 --
 -- Tablo için AUTO_INCREMENT değeri `siparis_detay`
 --
 ALTER TABLE `siparis_detay`
-  MODIFY `siparisdetay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `siparisdetay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 --
 -- Tablo için AUTO_INCREMENT değeri `slider`
 --
@@ -528,7 +561,7 @@ ALTER TABLE `urun`
 -- Tablo için AUTO_INCREMENT değeri `yorum`
 --
 ALTER TABLE `yorum`
-  MODIFY `yorum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `yorum_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

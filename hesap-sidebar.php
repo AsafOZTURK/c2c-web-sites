@@ -8,6 +8,7 @@
         <li><a href="siparislerim.php">Siparişlerim</a></li>
         <li><a href="mesaj-gonder.php">Mesaj Gönder</a></li>
         <li><a href="gelen-mesajlar.php">Gelen Mesajlar</a></li>
+        <li><a href="giden-mesajlar.php">Giden Mesajlar</a></li>
         <li><a href="hesabim.php">Kişisel Bilgiler</a></li>
         <li><a href="adres-bilgileri.php">Adres Bilgilerim</a></li>
         <li><a href="sifre-guncelle.php">Şifre Güncelleme</a></li>

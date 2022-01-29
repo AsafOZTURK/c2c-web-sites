@@ -696,3 +696,74 @@ if (isset($_POST['mesajgonder'])) {
 
 	}
 }
+
+
+if (isset($_POST['mesajcevap'])) {
+	echo $kullanici_gelen = $_POST['kullanici_gelen'];
+
+	$kaydet = $db->prepare("INSERT INTO mesaj SET
+		kullanici_gelen=:gelen,
+		kullanici_gonderen=:gonderen,
+		mesaj_detay=:mesaj
+	");
+
+	$insert = $kaydet->execute(array(
+		'gelen' => $kullanici_gelen,
+		'gonderen' => $_SESSION['userkullanici_id'],
+		'mesaj' => $_POST['mesaj_detay']
+	));
+
+	if ($insert) {
+
+		Header("Location:../../gelen-mesajlar.php?durum=ok");
+
+	} else {
+
+		Header("Location:../../gelen-mesajlar.php?durum=no");
+
+	}
+}
+
+
+if ($_GET['gelenmesajsil'] == 'ok') {
+
+	$mesaj_id = $_GET['mesaj_id'];
+
+	$sil = $db->prepare("DELETE FROM mesaj WHERE mesaj_id=:id");
+	$kontrol = $sil->execute(array(
+		'id' => $mesaj_id
+	));
+
+	if ($kontrol) {
+
+		Header("Location:../../gelen-mesajlar.php?sil=ok");
+
+	} else {
+
+		Header("Location:../../gelen-mesajlar.php?sil=hata");
+
+	}
+}
+
+
+if ($_GET['gidenmesajsil'] == 'ok') {
+
+	$mesaj_id = $_GET['mesaj_id'];
+
+	$sil = $db->prepare("DELETE FROM mesaj WHERE mesaj_id=:id");
+	$kontrol = $sil->execute(array(
+		'id' => $mesaj_id
+	));
+
+	if ($kontrol) {
+
+		Header("Location:../../giden-mesajlar.php?sil=ok");
+
+	} else {
+
+		Header("Location:../../giden-mesajlar.php?sil=hata");
+
+	}
+}
+
+
