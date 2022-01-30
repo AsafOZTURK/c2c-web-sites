@@ -1,3 +1,10 @@
+<?php 
+//dosyanın dışsardan görünmesini engelleme
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    exit("Bu sayfaya erişim yasak");
+}
+
+?>
 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-lg-pull-9 col-md-pull-8 col-sm-pull-8">
     <div class="fox-sidebar">
         <div class="sidebar-item">

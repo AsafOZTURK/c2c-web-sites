@@ -1,3 +1,11 @@
+<?php 
+//dosyanın dışsardan görünmesini engelleme
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    exit("Bu sayfaya erişim yasak");
+}
+
+?>
+
 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
     <ul class="settings-title">
         <li class="active"><a href="javascript:void(0)"><b>ÜYE İŞLEMLERİ</b></a></li>
@@ -6,7 +14,6 @@
             <li><a href="magaza-basvuru.php">Mağaza Başvuru</a></li>
         <?php } ?>
         <li><a href="siparislerim.php">Siparişlerim</a></li>
-        <li><a href="mesaj-gonder.php">Mesaj Gönder</a></li>
         <li><a href="gelen-mesajlar.php">Gelen Mesajlar</a></li>
         <li><a href="giden-mesajlar.php">Giden Mesajlar</a></li>
         <li><a href="hesabim.php">Kişisel Bilgiler</a></li>

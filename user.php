@@ -1,5 +1,7 @@
 <?php
 require_once "header.php";
+date_default_timezone_set('Europe/Istanbul');
+
 
 $kullanici_id =  $_GET['kullanici_id'];
 $kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_id=:id AND kullanici_magaza=:magaza");
@@ -44,7 +46,22 @@ if ($say == 0) {
                                 </div>
                                 <div class="sidebar-author-content">
                                     <h3><?php echo $kullanicicek['kullanici_ad'] . " " . $kullanicicek['kullanici_soyad'] ?></h3>
-                                    <a href="#" class="view-profile"><i class="fa fa-circle" aria-hidden="true"></i>Online</a>
+
+                                    <?php
+                                    $userkullanici_sonzaman = strtotime($kullanicicek['kullanici_sonzaman']);
+                                    $simdi = time();
+
+                                    $fark = ($simdi - $userkullanici_sonzaman);
+
+                                    if ($fark <= 50) { ?>
+                                        <a href="#" class="view-profile"><i class="fa fa-circle" aria-hidden="true"></i>Online</a>
+
+                                    <?php } else { ?>
+                                        <a href="#" class="view-profile"><i style="color:red;" class="fa fa-circle" aria-hidden="true"></i>Offline</a>
+
+                                    <?php }
+                                    ?>
+
                                 </div>
                             </div>
                             <ul class="sidebar-badges-item">

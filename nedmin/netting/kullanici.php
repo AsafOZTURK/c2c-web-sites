@@ -1,6 +1,8 @@
 <?php
 ob_start();
 session_start();
+date_default_timezone_set('Europe/Istanbul');
+
 
 include "baglan.php";
 include "../production/fonksiyon.php";
@@ -76,13 +78,23 @@ if (isset($_POST["musterikaydet"])) {
 
 if (isset($_POST['musterigiris'])) {
 
-	$kullanicimail = htmlspecialchars($_POST["kullanici_mail"]);
+	require_once '../../securimage/securimage.php';
+	$securimage = new Securimage();
+
+	if ($securimage->check($_POST['captcha_code']) == false) {
+
+		Header("Location:../../login.php?durum=captchahata");
+		exit;
+
+	}
+
+	$kullanici_mail = htmlspecialchars($_POST["kullanici_mail"]);
 	$kullanicipassword = htmlspecialchars($_POST["kullanici_password"]);
 
 	$kullanicisor = $db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail AND kullanici_password=:pass AND kullanici_yetki=:yetki AND kullanici_durum=:durum");
 
 	$kullanicisor->execute(array(
-		'mail' => $kullanicimail,
+		'mail' => $kullanici_mail,
 		'pass' => md5($kullanicipassword),
 		'yetki' => 1,
 		'durum' => 1
@@ -92,13 +104,26 @@ if (isset($_POST['musterigiris'])) {
 
 	if ($say == 1) {
 
-		$_SESSION["userkullanici_mail"] = $kullanicimail;
+		$zamanguncelle = $db->prepare("UPDATE kullanici SET
+			kullanici_sonzaman=:sonzaman
+			WHERE kullanici_mail = '$kullanici_mail'
+			");
+
+		$kontrol = $zamanguncelle->execute(array(
+			'sonzaman' => date("Y-m-d H:i:s")
+		));
+
+		$_SESSION["userkullanici_sonzaman"] = strtotime(date("Y-m-d H:i:s"));
+		$_SESSION["userkullanici_mail"] = $kullanici_mail;
+
 		Header("Location:../../index.php?durum=girisbasarili");
 		exit;
+
 	} else {
 
 		Header("Location:../../login.php?durum=hata");
 		exit;
+
 	}
 }
 
@@ -656,14 +681,13 @@ if (isset($_POST['yorumkaydet'])) {
 
 		$update = $siparisdetayguncelle->execute(array(
 			'yorum' => 1
-			));
-			
+		));
+
 		if (!$update) {
 			Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=yorumbasarisiz");
 		}
 
 		Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=ok");
-
 	} else {
 
 		Header("Location:../../siparis-detay.php?siparis_id=$siparis_id&durum=no");
@@ -689,11 +713,9 @@ if (isset($_POST['mesajgonder'])) {
 	if ($insert) {
 
 		Header("Location:../../mesaj-gonder.php?kullanici_gelen=$kullanici_gelen&durum=ok");
-
 	} else {
 
 		Header("Location:../../mesaj-gonder.php?kullanici_gelen=$kullanici_gelen&durum=no");
-
 	}
 }
 
@@ -716,11 +738,9 @@ if (isset($_POST['mesajcevap'])) {
 	if ($insert) {
 
 		Header("Location:../../gelen-mesajlar.php?durum=ok");
-
 	} else {
 
 		Header("Location:../../gelen-mesajlar.php?durum=no");
-
 	}
 }
 
@@ -737,11 +757,9 @@ if ($_GET['gelenmesajsil'] == 'ok') {
 	if ($kontrol) {
 
 		Header("Location:../../gelen-mesajlar.php?sil=ok");
-
 	} else {
 
 		Header("Location:../../gelen-mesajlar.php?sil=hata");
-
 	}
 }
 
@@ -758,12 +776,8 @@ if ($_GET['gidenmesajsil'] == 'ok') {
 	if ($kontrol) {
 
 		Header("Location:../../giden-mesajlar.php?sil=ok");
-
 	} else {
 
 		Header("Location:../../giden-mesajlar.php?sil=hata");
-
 	}
 }
-
-

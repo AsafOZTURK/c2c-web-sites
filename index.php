@@ -51,7 +51,7 @@ require_once "header.php";
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 onecikan plugins component">
                     <div class="single-item-grid">
                         <div class="item-img">
-                            <a href="urun-<?= seo($uruncek['urun_ad']) . "-" . $uruncek['urun_id']; ?>"><img src="<?php echo $uruncek['urunfoto_resimyol']; ?>" alt="product" class="img-responsive"></a>
+                            <a href="urun-<?= seo($uruncek['urun_ad']) . "-" . $uruncek['urun_id']; ?>"><img style="height:252px; width:451px;" src="<?php echo $uruncek['urunfoto_resimyol']; ?>" alt="product" class="img-responsive"></a>
                             <div class="trending-sign" data-tips="Öne çıkan ürün"><i class="fa fa-bolt" aria-hidden="true"></i></div>
                         </div>
                         <div class="item-content">

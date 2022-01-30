@@ -1,3 +1,10 @@
+<?php 
+//dosyanın dışsardan görünmesini engelleme
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    exit("Bu sayfaya erişim yasak");
+}
+
+?>
 <!-- Main Banner 1 Area Start Here -->
 <div class="inner-banner-area">
     <div class="container">

@@ -1,3 +1,10 @@
+<?php 
+//dosyanın dışsardan görünmesini engelleme
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    exit("Bu sayfaya erişim yasak");
+}
+
+?>
 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
     <ul class="profile-title">
         <li class="active"><a href="#Products" data-toggle="tab" aria-expanded="false"><i class="fa fa-cart-plus" aria-hidden="true"></i> Ürünler (

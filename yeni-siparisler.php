@@ -23,6 +23,24 @@ $siparissor->execute(array(
     'onays' => 0
 ));
 
+// $siparissor=$db->prepare("SELECT siparis.*,siparis.kullanici_idsatici as satici,siparis_detay.*,kullanici.*,urun.* FROM siparis 
+//                     INNER JOIN siparis_detay 
+//                     ON siparis.siparis_id=siparis_detay.siparis_id 
+//                     INNER JOIN kullanici 
+//                     ON kullanici.kullanici_id=siparis_detay.kullanici_id 
+//                     INNER JOIN urun 
+//                     ON urun.urun_id=siparis_detay.urun_id 
+//                     where siparis.kullanici_idsatici=:satici
+//                     and siparis_detay.siparisdetay_onay=:onay 
+//                     or siparis_detay.siparisdetay_onay=:onays)                 
+//                     order by siparis_zaman DESC
+//                     ");
+ 
+//                   $siparissor->execute(array(
+//                     'satici' => $_SESSION['userkullanici_id'],
+//                     'onay' => 0,
+//                     'onays' => 1
+//                   ));
 
 ?>
 <div class="pagination-area bg-secondary">

@@ -49,6 +49,14 @@ require_once "header.php";
                 <div class="alert alert-success">
                     <strong>Bilgi!</strong> Başarıyla çıkış yaptınız
                 </div>
+            <?php } else if ($_GET['durum'] == 'kayıtbasarili') { ?>
+                <div class="alert alert-success">
+                    <strong>Bilgi!</strong> Kayıt İşlemi Başarılı Giriş Yapabilirsiniz.
+                </div>
+            <?php } else if ($_GET['durum'] == 'captchahata') { ?>
+                <div class="alert alert-danger">
+                    <strong>Bilgi!</strong> Güvenlik Kodunu Yanlış Girdiniz Lütfen Tekrar Deneyin
+                </div>
             <?php } ?>
 
             <form action="nedmin/netting/kullanici.php" method="POST" id="personal-info-form">
@@ -63,6 +71,21 @@ require_once "header.php";
                         <div class="form-group">
                             <label class="control-label" for="last-name">Parola *</label>
                             <input type="password" name="kullanici_password" placeholder="Şifrenizi giriniz" required class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group" align="right">
+                            <label class="control-label" for="first-name">Captcha Kodu</label>
+                            <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image"/><br>
+                            <a class="btn btn-danger btn-xs" href="#" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false">[ Resmi Değiştir ]</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="last-name">Güvenlik Kodunu Giriniz</label>
+                            <input type="text" name="captcha_code" placeholder="Güvenlik Kodunu Giriniz" required class="form-control">
                         </div>
                     </div>
                 </div>

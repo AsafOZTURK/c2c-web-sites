@@ -1,9 +1,17 @@
 <?php
 ob_start();
 session_start();
+date_default_timezone_set('Europe/Istanbul');
 
 include "nedmin/netting/baglan.php";
 include "nedmin/production/fonksiyon.php";
+
+//dosyanın dışsardan görünmesini engelleme
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    exit("Bu sayfaya erişim yasak");
+}
+
+//date zaman düzenleme server saat ayarlama
 
 
 if (isset($_SESSION['userkullanici_mail'])) {
@@ -26,6 +34,26 @@ $ayarsor->execute(array(
 ));
 $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 
+///////////////////////// ONLİNE GÜNCELLEME  ///////////////////////////////////////
+
+$userkullanici_sonzaman = strtotime($_SESSION['userkullanici_sonzaman']);
+$simdi = time();
+
+$fark = ($simdi - $userkullanici_sonzaman);
+
+if ($fark >= 100) {
+
+    $zamanguncelle = $db->prepare("UPDATE kullanici SET
+        kullanici_sonzaman=:sonzaman
+        WHERE kullanici_id = {$_SESSION['userkullanici_id']}
+        ");
+
+    $kontrol = $zamanguncelle->execute(array(
+        'sonzaman' => date("Y-m-d H:i:s")
+    ));
+
+    $userkullanici_sonzaman = $_SESSION["userkullanici_sonzaman"] = strtotime(date("Y-m-d H:i:s"));
+}
 
 ?>
 
@@ -197,8 +225,8 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 
                                                     if ($mesajsor->rowCount() == 0) { ?>
                                                         <li>
-                                                            <div  class="notify-message-info">
-                                                                <div style="color:red !important; font-weight:bold;"class="notify-message-subject">Yeni Mesaj Yok</div>
+                                                            <div class="notify-message-info">
+                                                                <div style="color:red !important; font-weight:bold;" class="notify-message-subject">Yeni Mesaj Yok</div>
                                                             </div>
                                                         </li>
                                                     <?php }
@@ -235,7 +263,23 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                                     </div>
                                                     <div class="user-account-title">
                                                         <div class="user-account-name"><?php echo $kullanicicek['kullanici_ad']; ?></div>
-                                                        <div class="user-account-balance"></div>
+                                                        <div class="user-account-balance">
+
+                                                            <?php
+                                                            $siparissor = $db->prepare("SELECT SUM(urun_fiyat) AS toplam FROM siparis_detay WHERE kullanici_idsatici=:kullanici_id");
+                                                            $siparissor->execute(array(
+                                                                'kullanici_id' => $_SESSION['userkullanici_id']
+                                                            ));
+                                                            $sipariscek = $siparissor->fetch(PDO::FETCH_ASSOC);
+
+                                                            if (isset($sipariscek['toplam'])) {
+                                                                echo $sipariscek['toplam'];
+                                                            } else {
+                                                                echo "0.00";
+                                                            }
+                                                            ?>TL
+
+                                                        </div>
                                                     </div>
                                                     <div class="user-account-dropdown">
                                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -308,6 +352,8 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
                                 <nav id="dropdown">
                                     <ul>
                                         <li class="actiVe"><a href="index.php">ANASAYFA</a></li>
+                                        <li class="actiVe"><a href="login.php">Üye Giriş</a></li>
+                                        <li class="actiVe"><a href="register.php">Üye Kayıt</a></li>
                                         <?php
                                         $kategorisor = $db->prepare("SELECT * FROM kategori WHERE kategori_onecikar=:onecikar ORDER BY kategori_sira ASC");
                                         $kategorisor->execute(array(
