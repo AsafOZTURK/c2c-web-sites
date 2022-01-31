@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 30 Oca 2022, 19:45:50
+-- Üretim Zamanı: 31 Oca 2022, 14:43:02
 -- Sunucu sürümü: 5.7.17-log
 -- PHP Sürümü: 5.6.30
 
@@ -61,7 +61,7 @@ CREATE TABLE `ayar` (
 --
 
 INSERT INTO `ayar` (`ayar_id`, `ayar_logo`, `ayar_url`, `ayar_title`, `ayar_description`, `ayar_keywords`, `ayar_author`, `ayar_tel`, `ayar_gsm`, `ayar_faks`, `ayar_mail`, `ayar_ilce`, `ayar_il`, `ayar_adres`, `ayar_mesai`, `ayar_maps`, `ayar_analystic`, `ayar_zopim`, `ayar_facebook`, `ayar_twitter`, `ayar_google`, `ayar_youtube`, `ayar_smtphost`, `ayar_smtpuser`, `ayar_smtppassword`, `ayar_smtpport`, `ayar_bakim`) VALUES
-(0, 'dimg/31966Ekran görüntüsü 2022-01-13 142253.png', 'http://localhost/c2c', 'AlışverişGO', 'Udemy Php Eğitim Seti C2C Ticaret Sitesi', 'c2c,eticaret,hepsiburada,alışverişgo', 'Mehmet Asaf ÖZTÜRK', '0533 339 39 39', '0456 564 65 64 ', '0850 696 69 69', 'iletisim@alisverisgo.com', 'Tepebaşı', 'Eskişehir', 'Şirintepe Mahallesi No/50', '7/24 Kullanılabilir', '#', '#', '#', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.google.com/', 'https://www.youtube.com/', 'mail@alanadi.com', 'username', 'password', '587', '1');
+(0, 'dimg/31966Ekran görüntüsü 2022-01-13 142253.png', 'http://localhost/c2c', 'AlışverişGO', 'Udemy Php Eğitim Seti C2C Ticaret Sitesi', 'c2c,eticaret,hepsiburada,alışverişgo', 'Mehmet Asaf ÖZTÜRK', '0533 339 39 39', '0456 564 65 64 ', '0850 696 69 69', 'iletisim@alisverisgo.com', 'Tepebaşı', 'Eskişehir', 'Şirintepe Mahallesi No/50', '7/24 Kullanılabilir', '#', '#', '#', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.google.com/', 'https://www.youtube.com/', 'mail@alanadi.com', 'username', 'password', '587', '0');
 
 -- --------------------------------------------------------
 
@@ -149,6 +149,7 @@ CREATE TABLE `kullanici` (
   `kullanici_magazafoto` varchar(500) COLLATE utf8_turkish_ci NOT NULL DEFAULT 'dimg/magaza-fotoyok.png',
   `kullanici_zaman` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `kullanici_sonzaman` datetime NOT NULL,
+  `kullanici_ip` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `kullanici_resim` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   `kullanici_tc` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `kullanici_banka` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
@@ -174,12 +175,12 @@ CREATE TABLE `kullanici` (
 -- Tablo döküm verisi `kullanici`
 --
 
-INSERT INTO `kullanici` (`kullanici_id`, `subMerchantKey`, `kullanici_magaza`, `kullanici_magazafoto`, `kullanici_zaman`, `kullanici_sonzaman`, `kullanici_resim`, `kullanici_tc`, `kullanici_banka`, `kullanici_iban`, `kullanici_ad`, `kullanici_soyad`, `kullanici_mail`, `kullanici_gsm`, `kullanici_password`, `kullanici_adres`, `kullanici_il`, `kullanici_ilce`, `kullanici_unvan`, `kullanici_tip`, `kullanici_vdaire`, `kullanici_vno`, `kullanici_yetki`, `kullanici_durum`, `iptal_nedeni`) VALUES
-(167, '', '0', 'dimg/userimage/26579indir-jpg', '2022-01-04 13:51:48', '0000-00-00 00:00:00', 'https://i.tmgrup.com.tr/gq/original/17-06/22/user_male_circle_filled1600.png', '12345678999', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', 'Anadolu Üniversitesi', 'e10adc3949ba59abbe56e057f20f883e', 'Anadolu Üniversitesi', 'Eskişehir', 'Tepebaşı', '', 'PERSONAL', '', '', '5', 1, ''),
-(168, '', '2', 'dimg/userimage/61dd716824d66.jpg', '2022-01-04 14:28:29', '2022-01-30 21:21:10', '', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Mehmet Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Kahramanmaraş', 'Onikişubat', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
-(169, '', '2', 'dimg/userimage/61e0132a21ce4.jpg', '2022-01-04 14:28:29', '0000-00-00 00:00:00', '', '12345678911', 'Halkbank', '4345 4345 4345 4345', 'Cabbar', 'Deneme', 'cabbar@com.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Satıcı', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
-(170, '', '2', 'dimg/userimage/61eb22e0f29fa.jpg', '2022-01-22 00:16:24', '0000-00-00 00:00:00', '', '11122233344', 'VakıfBank', '5656 5656 5656 5656', 'Beyza', 'ÖZTÜRK', 'beyza@giris.com', '05366363636', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme', 'İstanbul', 'Beşiktaş', 'Modacı', 'PERSONAL', 'İstanbul', '888888888888', '1', 1, ''),
-(171, '', '0', 'dimg/userimage/61f1869deae13.jpg', '2022-01-22 00:16:24', '2022-01-30 20:34:58', '', '654654654656', 'Denizbank', '9696969696969696', 'Müşteri ', 'Hesabı', 'musteri@giris.com', '0523 223 23 23', 'e10adc3949ba59abbe56e057f20f883e', 'Alt mahalle No/50', 'Bursa', 'Merkez', '', 'PERSONAL', '', '', '1', 1, '');
+INSERT INTO `kullanici` (`kullanici_id`, `subMerchantKey`, `kullanici_magaza`, `kullanici_magazafoto`, `kullanici_zaman`, `kullanici_sonzaman`, `kullanici_ip`, `kullanici_resim`, `kullanici_tc`, `kullanici_banka`, `kullanici_iban`, `kullanici_ad`, `kullanici_soyad`, `kullanici_mail`, `kullanici_gsm`, `kullanici_password`, `kullanici_adres`, `kullanici_il`, `kullanici_ilce`, `kullanici_unvan`, `kullanici_tip`, `kullanici_vdaire`, `kullanici_vno`, `kullanici_yetki`, `kullanici_durum`, `iptal_nedeni`) VALUES
+(167, '', '0', 'dimg/userimage/26579indir-jpg', '2022-01-04 13:51:48', '0000-00-00 00:00:00', '', 'https://i.tmgrup.com.tr/gq/original/17-06/22/user_male_circle_filled1600.png', '12345678999', '', '4345 4345 4345 4345', 'Asaf', 'ÖZTÜRK', 'Admingiris', 'Anadolu Üniversitesi', 'e10adc3949ba59abbe56e057f20f883e', 'Anadolu Üniversitesi', 'Eskişehir', 'Tepebaşı', '', 'PERSONAL', '', '', '5', 1, ''),
+(168, '', '2', 'dimg/userimage/61dd716824d66.jpg', '2022-01-04 14:28:29', '2022-01-31 17:42:42', '::1', '', '12345678911', 'Ziraatbank', '4345 4345 4345 4345', 'Mehmet Asaf', 'ÖZTÜRK', 'giris@giris.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Kahramanmaraş', 'Onikişubat', 'Artech', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
+(169, '', '2', 'dimg/userimage/61e0132a21ce4.jpg', '2022-01-04 14:28:29', '0000-00-00 00:00:00', '', '', '12345678911', 'Halkbank', '4345 4345 4345 4345', 'Cabbar', 'Deneme', 'cabbar@com.com', '05555555555', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme adres giriş satırı No/50 Kat 0', 'Eskişehir', 'Tepebaşı', 'Satıcı', 'PERSONAL', 'Arslanbey', '99999999999', '1', 1, ''),
+(170, '', '2', 'dimg/userimage/61eb22e0f29fa.jpg', '2022-01-22 00:16:24', '0000-00-00 00:00:00', '', '', '11122233344', 'VakıfBank', '5656 5656 5656 5656', 'Beyza', 'ÖZTÜRK', 'beyza@giris.com', '05366363636', 'e10adc3949ba59abbe56e057f20f883e', 'Deneme', 'İstanbul', 'Beşiktaş', 'Modacı', 'PERSONAL', 'İstanbul', '888888888888', '1', 1, ''),
+(171, '', '0', 'dimg/userimage/61f1869deae13.jpg', '2022-01-22 00:16:24', '2022-01-30 20:34:58', '', '', '654654654656', 'Denizbank', '9696969696969696', 'Müşteri ', 'Hesabı', 'musteri@giris.com', '0523 223 23 23', 'e10adc3949ba59abbe56e057f20f883e', 'Alt mahalle No/50', 'Bursa', 'Merkez', '', 'PERSONAL', '', '', '1', 1, '');
 
 -- --------------------------------------------------------
 
@@ -232,7 +233,7 @@ INSERT INTO `mesaj` (`mesaj_id`, `mesaj_zaman`, `mesaj_detay`, `kullanici_gelen`
 (6, '2022-01-28 20:01:12', '<p>FJGAŞUFHSDIFUHASDPIUFAS</p>\r\n', 170, 168, '0'),
 (7, '2022-01-28 20:01:31', 'DENEME1', 170, 171, '0'),
 (8, '2022-01-28 20:01:38', 'MESAJ3', 169, 171, '0'),
-(9, '2022-01-28 20:01:46', 'MESAJ 2', 168, 171, '0'),
+(9, '2022-01-28 20:01:46', 'MESAJ 2', 168, 171, '1'),
 (10, '2022-01-28 20:24:29', '<p>Ben sizden bir &uuml;r&uuml;n almak istiyorum</p>\r\n', 168, 169, '0'),
 (11, '2022-01-29 19:35:10', '<p>Mesaj 2 cevabı</p>\r\n', 171, 168, '1'),
 (12, '2022-01-29 19:56:34', '<p>T&uuml;m mesajlarını okudum kardeşim</p>\r\n\r\n<p>&nbsp;</p>\r\n', 169, 168, '0'),

@@ -40,7 +40,7 @@ require_once "header.php";
     <div class="container">
         <h2 class="title-section">Giriş Sayfası</h2>
         <div class="registration-details-area inner-page-padding">
-        <?php
+            <?php
             if ($_GET['durum'] == 'hata') { ?>
                 <div class="alert alert-danger">
                     <strong>HATA!</strong> Kullanıcı adı yada parolanız hatalı lütfen tekrar deneyiniz
@@ -78,7 +78,7 @@ require_once "header.php";
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group" align="right">
                             <label class="control-label" for="first-name">Captcha Kodu</label>
-                            <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image"/><br>
+                            <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image" /><br>
                             <a class="btn btn-danger btn-xs" href="#" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false">[ Resmi Değiştir ]</a>
                         </div>
                     </div>
@@ -89,12 +89,11 @@ require_once "header.php";
                         </div>
                     </div>
                 </div>
-                
-                
-                <div class="row">  
+                <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="pLace-order">
                             <button class="update-btn disabled" name="musterigiris" type="submit" value="Login">Giriş Yap</button>
+                            <button type="button" style="background-color:red;border-color:red;" class="update-btn disabled" data-toggle="modal" data-target="#sifremiunuttum" data-whatever="@mdo">Şifremi Unuttum</button>
                         </div>
                     </div>
                 </div>
@@ -102,6 +101,32 @@ require_once "header.php";
         </div>
     </div>
 </div>
+<!-- Modal Kodları -->
+<div class="modal fade" id="sifremiunuttum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Şifre Sıfırlama</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="mailphp/sifremi-unuttum.php" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Mail Adresiniz:</label>
+                        <input type="email" placeholder="Sisteme kayıtlı mail adresinizi giriniz yoksa şifreniz size ulaşmaz" class="form-control" name="kullanici_mail" id="recipient-name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" name="sifremiunuttum" class="btn btn-primary">Yeni Şifre Talep Et</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Kodları -->
 <!-- Registration Page Area End Here -->
 
 <?php require_once "footer.php"; ?>

@@ -103,14 +103,17 @@ if (isset($_POST['musterigiris'])) {
 	$say = $kullanicisor->rowCount();
 
 	if ($say == 1) {
+		$kullanici_ip = $_SERVER['REMOTE_ADDR']; //Siteye giren kullanınıcının ip adresini alır
 
 		$zamanguncelle = $db->prepare("UPDATE kullanici SET
-			kullanici_sonzaman=:sonzaman
+			kullanici_sonzaman=:sonzaman,
+			kullanici_ip=:ip
 			WHERE kullanici_mail = '$kullanici_mail'
 			");
 
 		$kontrol = $zamanguncelle->execute(array(
-			'sonzaman' => date("Y-m-d H:i:s")
+			'sonzaman' => date("Y-m-d H:i:s"),
+			'ip' => $kullanici_ip
 		));
 
 		$_SESSION["userkullanici_sonzaman"] = strtotime(date("Y-m-d H:i:s"));

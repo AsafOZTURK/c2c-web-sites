@@ -34,6 +34,10 @@ $ayarsor->execute(array(
 ));
 $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 
+if ($ayarcek['ayar_bakim'] == 1) {
+    exit("Şuan bakımdayız.");
+}
+
 ///////////////////////// ONLİNE GÜNCELLEME  ///////////////////////////////////////
 
 $userkullanici_sonzaman = strtotime($_SESSION['userkullanici_sonzaman']);
